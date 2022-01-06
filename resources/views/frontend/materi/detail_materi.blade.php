@@ -10,7 +10,12 @@
               <h1>{{$detail_materi->judul}}</h1>
               <p>Materi pembelajaran mengenai {{$detail_materi->judul}}
               </p>
-              <a href="#" class="btn focus-reset">Get Started</a>
+              @if (Request::is('materi_jerat/*'))
+                <a href="{{ route('materi-jerat') }}" class="btn focus-reset">List Materi Jerat</a>
+              @else
+                <a href="{{ route('materi-simpul') }}" class="btn focus-reset">List Materi Simpul</a>
+              @endIf
+              
             </div>
           </div>
           <div class="col-xl-6 col-lg-5 col-md-8 order-lg-1 order-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="true">

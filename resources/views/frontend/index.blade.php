@@ -71,34 +71,32 @@
             <div class="row service-l4-card-items justify-content-center align-items-center">
                 <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000">
                     <div class="service-l4-card">
-                    <div class="content">
-                        <h4>Jenis<br> Simpul</h4>
-                        <p>Kumpulan materi pembelajaran mengenai jenis-jenis simpul pada tali temali.</p>
-                    </div>
-                    <div class="number-icon-area d-flex justify-content-between flex-wrap">
-                        <div class="icon">
-                        <a href="{{ route('materi-simpul') }}"><img src="{{ url('assets/image/landing-4/arrow-right1.png') }}" alt="icon"></a>
-                        </div>
-                        <div class="number">
-                        <h1>01</h1>
-                        </div>
-                    </div>
+                      <div class="content">
+                        <a href="{{ route('materi-simpul') }}">
+                          <h4>Jenis<br> Simpul</h4>
+                        </a>
+                          <p>Kumpulan materi pembelajaran mengenai jenis-jenis simpul pada tali temali.</p>
+                      </div>
+                      <div class="number-icon-area d-flex justify-content-between flex-wrap" style="padding-bottom: 2.7rem;">
+                          <div class="icon">
+                          <a href="{{ route('materi-simpul') }}"><img src="{{ url('assets/image/landing-4/arrow-right1.png') }}" alt="icon"></a>
+                          </div>
+                      </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
                     <div class="service-l4-card">
-                    <div class="content">
-                        <h4>Jenis<br> Jerat</h4>
-                        <p>Kumpulan materi pembelajaran mengenai jenis-jenis jerat pada tali temali.</p>
-                    </div>
-                    <div class="number-icon-area d-flex justify-content-between flex-wrap">
-                        <div class="icon">
-                        <a href="{{ route('materi-jerat') }}"><img src="{{ url('assets/image/landing-4/arrow-right1.png') }}" alt="icon"></a>
-                        </div>
-                        <div class="number">
-                        <h1>02</h1>
-                        </div>
-                    </div>
+                      <div class="content">
+                      <a href="{{ route('materi-simpul') }}">
+                          <h4>Jenis<br> Jerat</h4>
+                      </a>
+                          <p>Kumpulan materi pembelajaran mengenai jenis-jenis jerat pada tali temali.</p>
+                      </div>
+                      <div class="number-icon-area d-flex justify-content-between flex-wrap" style="padding-bottom: 2.7rem;">
+                          <div class="icon">
+                          <a href="{{ route('materi-jerat') }}"><img src="{{ url('assets/image/landing-4/arrow-right1.png') }}" alt="icon"></a>
+                          </div>
+                      </div>
                     </div>
                 </div>
             </div>
