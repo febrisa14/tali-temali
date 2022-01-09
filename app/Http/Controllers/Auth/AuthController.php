@@ -32,13 +32,13 @@ class AuthController extends Controller
 
         if (Auth::user()->role == "Anggota")
         {
-            return redirect()->route('home');
+            return redirect()->route('home')->with('success', 'Berhasil Login ke sistem');
         }
         else if (Auth::user()->role == "Pengurus")
         {
             return redirect()->route('admin.dashboard');
         }
-        else 
+        else
         {
             return redirect()->back();
         }

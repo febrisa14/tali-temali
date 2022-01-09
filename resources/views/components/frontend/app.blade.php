@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $title }}</title>
-  
+
   <link rel="shortcut icon" href="{{ url('assets/image/favicon.png') }}" type="image/x-icon">
   <!-- Bootstrap , fonts & icons  -->
   <link rel="stylesheet" href="{{ url('assets/css/bootstrap.css') }}">
@@ -27,6 +27,13 @@
   <!-- Vendor stylesheets  -->
   <link rel="stylesheet" href="{{ url('assets/css/main.css') }}">
   <!-- Custom stylesheet -->
+  <!-- IziToast -->
+  <link rel="stylesheet" href="{{ asset('assets/oneui/js/plugins/iziToast/iziToast.min.css') }}">
+  <script src="{{ asset('assets/oneui/js/plugins/iziToast/iziToast.min.js') }}"></script>
+
+  <!-- SweetAlert CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/oneui/js/plugins/sweetalert2/sweetalert2.min.css') }}">
+
 </head>
 
 <body data-theme-mode-panel-active data-theme="light" style="font-family: 'Mazzard H';">
@@ -35,7 +42,7 @@
     @include('/components/frontend/header')
 
     @yield('content')
-    
+
     @include('/components/frontend/footer')
 
   </div><!-- site wrapper end -->
@@ -53,6 +60,8 @@
   <script src="{{ url('assets/plugins/menu/menu.js') }}"></script>
   <!-- Activation Script -->
   <script src="{{ url('assets/js/custom.js') }}"></script>
-  
+
+  @stack('scripts')
+
 </body>
 </html>

@@ -47,3 +47,51 @@
     </div>
 
 @stop
+
+@push('scripts')
+
+@if ($message = Session::get('success'))
+<script>
+    iziToast.success({
+        title: 'Success',
+        message: '{{$message}}',
+        position: 'topCenter'
+    });
+</script>
+@endif
+
+{{-- @if ($message = Session::get('failed'))
+<script>
+iziToast.warning({
+    title: 'Login Gagal',
+    message: '{{$message}}',
+    position: 'bottomRight'
+});
+</script>
+@endif --}}
+
+<!-- iziToast Error Tampil -->
+@if ($errors->any)
+    @foreach ($errors->all() as $message)
+    <script>
+        iziToast.error({
+            title: 'Login Gagal',
+            message: '{{ $message }}',
+            position: 'bottomRight',
+        });
+    </script>
+    @endforeach
+@endif
+
+@if ($message = Session::get('failed'))
+<script>
+iziToast.warning({
+    title: 'Login Gagal',
+    message: '{{$message}}',
+    position: 'bottomRight'
+});
+</script>
+
+@endif
+
+@endpush

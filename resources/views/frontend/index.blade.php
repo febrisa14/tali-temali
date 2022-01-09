@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Hero Area -->
-    <div class="hero-area-l7 background-property" style="background: url({{ url('assets/image/hero-bg.jpg') }});">      
+    <div class="hero-area-l7 background-property" style="background: url({{ url('assets/image/hero-bg.jpg') }});">
       <div class="container">
         <div class="bg-overlay" style="border-radius: 0.8rem; opacity: 0.6;"></div>
           <div class="row align-items-center justify-content-lg-start justify-content-center">
@@ -105,3 +105,17 @@
     </div>
 
 @stop
+
+@push('scripts')
+
+@if ($message = Session::get('success'))
+<script>
+    iziToast.success({
+        title: 'Success',
+        message: '{{$message}}',
+        position: 'topCenter'
+    });
+</script>
+@endif
+
+@endpush
