@@ -81,7 +81,7 @@ class AnggotaController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('anggota.index')->with('success', 'Berhasil Menambahkan Anggota.');   
+        return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Menambahkan Anggota.');   
     }
 
     /**

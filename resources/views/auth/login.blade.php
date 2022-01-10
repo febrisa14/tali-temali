@@ -92,6 +92,17 @@ iziToast.warning({
 });
 </script>
 
+@endIf
+
+@if ($message = Session::get('login'))
+<script>
+iziToast.warning({
+    title: 'Error',
+    message: '{{$message}}',
+    position: 'bottomRight'
+});
+</script>
+
 @endif
 
 @endpush

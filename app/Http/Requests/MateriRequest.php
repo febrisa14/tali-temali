@@ -26,7 +26,6 @@ class MateriRequest extends FormRequest
         return [
             'judul' => 'required|min:5',
             'kategori' => 'required',
-            'deskripsi' => 'required',
             'cover_photo' => 'required|image|mimes:jpeg,png,jpg',
             'url_video' => 'required'
         ];
