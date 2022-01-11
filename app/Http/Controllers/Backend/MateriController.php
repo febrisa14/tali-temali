@@ -24,7 +24,7 @@ class MateriController extends Controller
             $data = Materi::select('materi_id', 'judul', 'kategori')
                 ->orderBy('materi.created_at', 'DESC')
                 ->get();
-                
+
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
@@ -79,7 +79,7 @@ class MateriController extends Controller
             'cover_photo' => $filename,
         ]);
 
-        return redirect()->route('materi.index')->with('success', 'Berhasil Menambahkan Materi.');
+        return redirect()->route('admin.materi.index')->with('success', 'Berhasil Menambahkan Materi.');
     }
 
     /**
@@ -172,7 +172,7 @@ class MateriController extends Controller
                 'updated_at' => now()
             ]);
 
-            return redirect()->route('materi.index')->with('success', 'Berhasil Update Materi.');
+            return redirect()->route('admin.materi.index')->with('success', 'Berhasil Update Materi.');
         }
 
         return back()->with('error', 'Kamu belum merubah data apapun !');
@@ -199,27 +199,27 @@ class MateriController extends Controller
         if($request->hasFile('upload')) {
             //get filename with extension
             $filenamewithextension = $request->file('upload')->getClientOriginalName();
-      
+
             //get filename without extension
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-      
+
             //get file extension
             $extension = $request->file('upload')->getClientOriginalExtension();
-      
+
             //filename to store
             $filenametostore = $filename.'_'.time().'.'.$extension;
-      
+
             //Upload File
             $request->file('upload')->storeAs('public/uploads', $filenametostore);
             $request->file('upload')->storeAs('public/uploads/thumbnail', $filenametostore);
-     
+
             //Resize image here
             $thumbnailpath = public_path('storage/uploads/thumbnail/'.$filenametostore);
             $img = Image::make($thumbnailpath)->resize(306, 340, function($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($thumbnailpath);
-     
+
             echo json_encode([
                 'default' => asset('storage/uploads/'.$filenametostore),
                 '500' => asset('storage/uploads/thumbnail/'.$filenametostore)
