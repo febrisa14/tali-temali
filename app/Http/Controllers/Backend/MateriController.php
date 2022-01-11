@@ -152,7 +152,7 @@ class MateriController extends Controller
         {
             if ($request->hasFile('cover_photo'))
             {
-                Materi::where('materi',$id)->update([
+                Materi::where('materi_id',$id)->update([
                     'judul' => $request->judul,
                     'deskripsi' => $request->deskripsi,
                     'kategori' => $request->kategori,
