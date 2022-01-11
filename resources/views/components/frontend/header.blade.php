@@ -3,7 +3,7 @@
         <nav class="navbar site-navbar">
           <!-- Brand Logo-->
           <div class="brand-logo">
-            <a href="#">
+            <a href="{{ route('home') }}">
               <!-- light version logo (logo must be black)-->
               <img src="{{ url('assets/image/mapala-dark.png') }}" height="34" alt="" class="light-version-logo">
             </a>
@@ -52,6 +52,10 @@
           </div>
           @auth
           <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
+            @if(Auth::User()->role == 'Pengurus')
+                <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
+                </a>
+            @endIf
             <a class="btn btn btn-style-03 focus-reset" href="{{ route('logout') }}" onclick="
               event.preventDefault();
               document.getElementById('logout-form').submit();
