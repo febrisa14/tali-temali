@@ -13,4 +13,11 @@ class HomeController extends Controller
             'title' => 'Beranda | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
         ]);
     }
+
+    public function jenis()
+    {
+        return view('frontend/index', [
+            'title' => 'Beranda | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
+        ]);
+    }
 }

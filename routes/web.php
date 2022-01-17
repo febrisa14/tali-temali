@@ -8,7 +8,7 @@ use App\Http\Controllers\Frontend\SimpulController;
 
 //Backend Route
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\AnggotaController;
+use App\Http\Controllers\Backend\PenggunaController;
 use App\Http\Controllers\Backend\MateriController;
 use App\Http\Controllers\Backend\KategoriController;
 
@@ -27,6 +27,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/#jenis', [HomeController::class, 'jenis'])->name('home-jenis');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/materi_jerat', [JeratController::class, 'index'])->name('materi-jerat');
@@ -39,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('anggota', AnggotaController::class);
+        Route::resource('pengguna', PenggunaController::class);
         Route::resource('materi', MateriController::class);
         Route::post('editor/image_upload', [MateriController::class, 'upload'])->name('upload');
 

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Anggota;
+use App\Models\Pengurus;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,11 @@ class User extends Authenticatable
     public function Anggota()
     {
         return $this->hasOne(Anggota::class, 'anggota_user_id', 'user_id');
+    }
+
+    public function Pengurus()
+    {
+        return $this->hasOne(Pengurus::class, 'pengurus_user_id', 'user_id');
     }
 
     protected $table = 'users';

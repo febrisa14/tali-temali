@@ -10,12 +10,12 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Data Anggota
+                    Data Pengguna
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Anggota</li>
+                        <li class="breadcrumb-item" aria-current="page">Pengguna</li>
                     </ol>
                 </nav>
             </div>
@@ -29,22 +29,21 @@
         <!-- Dynamic Table Full Pagination -->
         <div class="block block-rounded">
             <div class="block-header border-bottom">
-                <h3 class="block-title"><small>List Data</small> Anggota</h3>
-                    <a href="{{ route('admin.anggota.create') }}" id="addAnggota" class="btn btn-sm btn-alt-primary px-2 py-2">
-                        <i class="fa fa-plus mr-1"></i> Tambah Anggota
+                <h3 class="block-title"><small>List Data</small> Pengguna</h3>
+                    <a href="{{ route('admin.pengguna.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
+                        <i class="fa fa-plus mr-1"></i> Tambah Pengguna
                     </a>
             </div>
 
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                 <div class="table-responsive">
-                    <table width="100%" class="table table-bordered js-dataTable-full-pagination" id="table-anggota">
+                    <table width="100%" class="table table-bordered js-dataTable-full-pagination" id="table-pengguna">
                         <thead class="thead-dark">
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Gender</th>
-                                <th>Umur</th>
+                                <th>Role</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -78,7 +77,7 @@ $(document).ready(function(){
     });
 
     $(function() {
-        $('#table-anggota').DataTable({
+        $('#table-pengguna').DataTable({
             processing: true,
             serverSide: true,
             autowidth: true,
@@ -86,17 +85,15 @@ $(document).ready(function(){
                 {targets: 0, className: "text-center", width: "32px"},
                 {targets: 1, width: "224px"},
                 {targets: 2, className: "text-center", width: "94px"},
-                {targets: 3, className: "text-center", width: "60px"},
-                {targets: 4, className: "text-center", width: "232px"},
+                {targets: 3, className: "text-center", width: "232px"},
             ],
             ajax: {
-                url: '{{ route('admin.anggota.index') }}',
+                url: '{{ route('admin.pengguna.index') }}',
             },
             columns: [
                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                   {data: 'name', name: 'name'},
-                  {data: 'jenis_kelamin', name: 'jenis_kelamin', orderable: false},
-                  {data: 'umur', name: 'umur'},
+                  {data: 'role', name: 'role', orderable: false},
                   {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -105,7 +102,7 @@ $(document).ready(function(){
     $(document).on('click', '.delete', function (){
         var id = $(this).data("id");
         Swal.fire({
-            title: 'Hapus Data Anggota?',
+            title: 'Hapus Data Pengguna?',
             text: 'Klik "Iya" untuk menghapus data',
             icon: 'warning',
             showCancelButton: true,
@@ -118,7 +115,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "delete",
                     dataType: 'json',
-                    url: "{{ route('admin.anggota.destroy','') }}/"+id,
+                    url: "{{ route('admin.pengguna.destroy','') }}/"+id,
                     success: function (data) {
                         if (data.success == true)
                         {
@@ -128,7 +125,7 @@ $(document).ready(function(){
                         {
                             Swal.fire('Gagal', data.message ,'error');
                         }
-                        var table = $('#table-anggota').DataTable();
+                        var table = $('#table-pengguna').DataTable();
                         table.draw();
                         // location.reload();
                         }

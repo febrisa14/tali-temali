@@ -22,11 +22,10 @@ class AnggotaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('users.user_id', 'users.name', 'anggota.jenis_kelamin', 'anggota.umur')
-                    ->rightJoin('anggota', 'anggota.anggota_user_id', '=', 'users.user_id')
-                    ->orderBy('users.created_at', 'DESC')
+            $data = User::select('user_id', 'name', 'role')
+                    ->orderBy('created_at', 'DESC')
                     ->get();
-                
+
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
@@ -81,7 +80,7 @@ class AnggotaController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Menambahkan Anggota.');   
+        return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Menambahkan Anggota.');
     }
 
     /**

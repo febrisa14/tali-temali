@@ -37,24 +37,24 @@
                     <div class="row items-push">
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Judul Materi</label>
+                                <label>Judul Materi <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Materi..." value="{{ $materi->judul }}">
                             </div>
                             <div class="form-group">
-                                <label>URL Video Youtube</label>
+                                <label>URL Video Youtube <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="url_video" name="url_video" placeholder="Masukan URL Video Youtube..." value="{{ $materi->url_video }}">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Kategori</label>
+                                <label>Kategori <span class="text-danger">*</span></label>
                                 <select class="custom-select" id="kategori" name="kategori">
                                     <option {{ $materi->kategori == "Simpul" ? 'selected' : '' }} value="Simpul">Simpul</option>
                                     <option {{ $materi->kategori == "Jerat" ? 'selected' : '' }} value="Jerat">Jerat</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Cover Foto</label>
+                                <label>Cover Foto <span class="text-danger">*</span></label>
                                 <div class="push">
                                     <img class="img" width="150" src="{{ asset('/cover/'.$materi->cover_photo) }}" alt="">
                                 </div>
@@ -125,7 +125,7 @@ class MyUploadAdapter {
     constructor( loader ) {
         this.loader = loader;
     }
- 
+
     upload() {
         return this.loader.file
             .then( file => new Promise( ( resolve, reject ) => {
@@ -134,37 +134,37 @@ class MyUploadAdapter {
                 this._sendRequest( file );
             } ) );
     }
- 
+
     abort() {
         if ( this.xhr ) {
             this.xhr.abort();
         }
     }
- 
+
     _initRequest() {
         const xhr = this.xhr = new XMLHttpRequest();
- 
+
         xhr.open( 'POST', "{{route('admin.upload', ['_token' => csrf_token() ])}}", true );
         xhr.responseType = 'json';
     }
- 
+
     _initListeners( resolve, reject, file ) {
         const xhr = this.xhr;
         const loader = this.loader;
         const genericErrorText = `Couldn't upload file: ${ file.name }.`;
- 
+
         xhr.addEventListener( 'error', () => reject( genericErrorText ) );
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
- 
+
             if ( !response || response.error ) {
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }
- 
+
             resolve( response );
         } );
- 
+
         if ( xhr.upload ) {
             xhr.upload.addEventListener( 'progress', evt => {
                 if ( evt.lengthComputable ) {
@@ -174,22 +174,22 @@ class MyUploadAdapter {
             } );
         }
     }
- 
+
     _sendRequest( file ) {
         const data = new FormData();
- 
+
         data.append( 'upload', file );
- 
+
         this.xhr.send( data );
     }
 }
- 
+
 function MyCustomUploadAdapterPlugin( editor ) {
     editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
         return new MyUploadAdapter( loader );
     };
 }
- 
+
 ClassicEditor
     .create( document.querySelector( '#ckeditor' ), {
         extraPlugins: [ MyCustomUploadAdapterPlugin ],

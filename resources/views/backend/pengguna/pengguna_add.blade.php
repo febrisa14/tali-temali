@@ -9,13 +9,13 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Tambah Data Anggota
+                    Tambah Data Pengguna
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.anggota.index') }}">Anggota</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Tambah Anggota</li>
+                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.pengguna.index') }}">Pengguna</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Tambah Pengguna</li>
                     </ol>
                 </nav>
             </div>
@@ -31,12 +31,12 @@
                 <div class="block-content block-content-full">
                     <!-- Regular -->
                     <h2 class="content-heading border-bottom mb-4 pb-2">Informasi Akun</h2>
-                    <form action="{{ route('admin.anggota.store') }}" method="POST">
+                    <form action="{{ route('admin.pengguna.store') }}" method="POST">
                     @csrf
                     <div class="row items-push">
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email <span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email..">
                                 {{-- <small class="form-text text-muted">Contoh: contoh@gmail.com</small> --}}
                             </div>
@@ -45,21 +45,21 @@
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Masukan Password..">
                             </div> -->
                             <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
+                                <label for="nama">Nama Lengkap <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama Lengkap...">
                             </div>
                             <div class="form-group">
-                                <label for="no_telp">No. Telp</label>
+                                <label for="no_telp">No. Telp <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukan No. Telp ...">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label for="tgl_lahir">Tanggal Lahir</label>
+                                <label for="tgl_lahir">Tanggal Lahir <span class="text-danger">*</span></label>
                                 <input type="text" class="js-flatpickr form-control bg-white" id="tgl_lahir" name="tgl_lahir" placeholder="d-m-Y" data-date-format="d-m-Y">
                             </div>
                             <div class="form-group">
-                                <label for="jenis_kelamin">Jenis Kelamin</label>
+                                <label for="jenis_kelamin">Jenis Kelamin <span class="text-danger">*</span></label>
                                 <select class="custom-select" id="jenis_kelamin" name="jenis_kelamin">
                                     <option value="">- Pilih -</option>
                                     <option value="Laki - Laki">Laki-Laki</option>
@@ -67,8 +67,18 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="2" placeholder="Masukan Alamat Lengkap..."></textarea>
+                                <label>Role <span class="text-danger">*</span></label>
+                                <select class="custom-select" id="role" name="role">
+                                    <option value="">- Pilih -</option>
+                                    <option value="Anggota">Anggota</option>
+                                    <option value="Pengurus">Pengurus</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="alamat">Alamat <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat Lengkap..."></textarea>
                             </div>
                         </div>
                     </div>

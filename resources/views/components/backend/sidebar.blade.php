@@ -36,9 +36,9 @@
                 </li>
                 <li class="nav-main-heading">Master Data</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Request::is('admin/anggota*') ? 'active' : '' }}" href="{{ route('admin.anggota.index') }}">
+                    <a class="nav-main-link {{ Request::is('admin/pengguna*') ? 'active' : '' }}" href="{{ route('admin.pengguna.index') }}">
                         <i class="nav-main-link-icon fa fa-users"></i>
-                        <span class="nav-main-link-name">Anggota</span>
+                        <span class="nav-main-link-name">Pengguna</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
@@ -47,12 +47,13 @@
                         <span class="nav-main-link-name">Materi</span>
                     </a>
                 </li>
-                <!-- <li class="nav-main-item">
-                    <a class="nav-main-link {{ Request::is('admin/pengurus*') ? 'active' : '' }}" href="#">
-                        <i class="nav-main-link-icon fa fa-user-friends"></i>
-                        <span class="nav-main-link-name">Pengurus</span>
+                <li class="nav-main-heading">Akun</li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <i class="nav-main-link-icon fas fa-user"></i>
+                        <span class="nav-main-link-name">Profile</span>
                     </a>
-                </li> -->
+                </li>
         </div>
         <!-- END Side Navigation -->
     </div>
