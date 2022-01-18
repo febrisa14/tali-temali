@@ -55,6 +55,9 @@
             @if(Auth::User()->role == 'Pengurus')
                 <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
                 </a>
+            @else
+                <a href="{{ route('anggota.profile') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Profile
+                </a>
             @endIf
             <a class="btn btn btn-style-03 focus-reset" href="{{ route('logout') }}" onclick="
               event.preventDefault();

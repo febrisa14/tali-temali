@@ -11,6 +11,9 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PenggunaController;
 use App\Http\Controllers\Backend\MateriController;
 use App\Http\Controllers\Backend\KategoriController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\AnggotaProfileController;
+use App\Http\Controllers\Backend\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,16 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('pengguna', PenggunaController::class);
         Route::resource('materi', MateriController::class);
         Route::post('editor/image_upload', [MateriController::class, 'upload'])->name('upload');
+        Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
+        Route::post('/change_profile', [ProfileController::class, 'updateProfile'])->name('change_profile');
+    });
+
+    Route::post('/change_password', [PasswordController::class, 'changePassword'])->name('change_password');
+
+    Route::middleware(['anggota'])->prefix('anggota')->name('anggota.')->group(function () {
+
+        Route::get('/profile', [AnggotaProfileController::class, 'index'])->name('profile');
+        Route::post('/change_profile', [AnggotaProfileController::class, 'updateProfile'])->name('change_profile');
 
     });
 

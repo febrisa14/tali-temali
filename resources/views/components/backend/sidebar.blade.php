@@ -23,6 +23,8 @@
     </div>
     <!-- END Side Header -->
 
+    @if (Auth::User()->role == "Pengurus")
+
     <!-- Sidebar Scrolling -->
     <div class="js-sidebar-scroll">
         <!-- Side Navigation -->
@@ -49,14 +51,43 @@
                 </li>
                 <li class="nav-main-heading">Akun</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
+                    <a class="nav-main-link {{ Request::is('admin/profile*') ? 'active' : '' }}" href="{{ route('admin.profile') }}">
                         <i class="nav-main-link-icon fas fa-user"></i>
                         <span class="nav-main-link-name">Profile</span>
                     </a>
                 </li>
+            </ul>
         </div>
         <!-- END Side Navigation -->
     </div>
     <!-- END Sidebar Scrolling -->
+
+    @else
+
+    <!-- Sidebar Scrolling -->
+    <div class="js-sidebar-scroll">
+        <!-- Side Navigation -->
+        <div class="content-side">
+            <ul class="nav-main">
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('home') }}">
+                        <i class="nav-main-link-icon si si-home"></i>
+                        <span class="nav-main-link-name">Beranda</span>
+                    </a>
+                </li>
+                <li class="nav-main-heading">Akun</li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Request::is('anggota/profile*') ? 'active' : '' }}" href="{{ route('anggota.profile') }}">
+                        <i class="nav-main-link-icon fas fa-user"></i>
+                        <span class="nav-main-link-name">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END Side Navigation -->
+    </div>
+    <!-- END Sidebar Scrolling -->
+
+    @endIf
 </nav>
 <!-- END Sidebar -->
