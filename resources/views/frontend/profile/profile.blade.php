@@ -13,7 +13,7 @@
                 <h3 class="block-title">Informasi Akun</h3>
             </div>
             <div class="block-content">
-                <form action="" method="POST">
+                <form action="{{ route('anggota.change_profile') }}" method="POST">
                     @csrf
                     <div class="row push">
                         <div class="col-lg-4">

@@ -53,13 +53,13 @@
           @auth
           <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
             @if(Auth::User()->role == 'Pengurus')
-                <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
+                <a href="{{ route('admin.dashboard') }}" class="btn btn log-in-btn btn-style-02 focus-reset"><i class="si si-home"></i> Admin Dashboard
                 </a>
             @else
-                <a href="{{ route('anggota.profile') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Profile
+                <a href="{{ route('anggota.profile') }}" class="btn btn log-in-btn btn-style-02 focus-reset"><i class="si si-home"></i> Profile
                 </a>
             @endIf
-            <a class="btn btn btn-style-03 focus-reset" href="{{ route('logout') }}" onclick="
+            <a class="btn btn log-in-btn btn-style-02 focus-reset" href="{{ route('logout') }}" onclick="
               event.preventDefault();
               document.getElementById('logout-form').submit();
             ">Logout
@@ -71,7 +71,7 @@
           @endauth
           @guest
           <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
-            <a class="btn btn-style-03 focus-reset" href="{{ route('login') }}">
+            <a class="btn btn log-in-btn btn-style-02 focus-reset" href="{{ route('login') }}">
               Login
             </a>
           </div>
