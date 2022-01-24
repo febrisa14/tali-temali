@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\AnggotaRequest;
 use App\Models\User;
-use App\Models\Anggota;
+use App\Models\Detail;
 use DataTables;
 use Hash;
 use Carbon\Carbon;
@@ -22,16 +21,16 @@ class AnggotaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('user_id', 'name', 'role')
+            $data = User::select('user_id', 'name', 'no_ca')
                     ->orderBy('created_at', 'DESC')
-                    ->get();
+                    ->where('role','=','Anggota')->get();
 
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                    $actionBtn = ' <a href="/admin/anggota/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
-                    $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
-                    return $actionBtn;
+                $actionBtn = ' <a href="/admin/anggota/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
+                $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
+                return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -60,20 +59,31 @@ class AnggotaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AnggotaRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            'name' => 'required',
+            'no_telp' => 'required|numeric',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'no_ca' => 'required',
+            'alamat' => 'required'
+        ]);
+
         $users = User::create([
             'email' => $request->email,
             'password' => Hash::make('12345678'),
             'name' => $request->name,
+            'no_ca' => $request->no_ca,
             'no_telp' => $request->no_telp,
-            'role' => 'Anggota',
+            'role' => 'Anggota'
         ]);
 
         $usersId = $users->user_id;
 
-        Anggota::create([
-            'anggota_user_id' => $usersId,
+        Detail::create([
+            'detail_user_id' => $usersId,
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'umur' => now()->format('Y') - Carbon::parse($request->tgl_lahir)->format('Y'),
@@ -103,16 +113,17 @@ class AnggotaController extends Controller
     public function edit($id)
     {
         $user = User::select(
-            'users.user_id',
-            'users.email',
-            'users.name',
-            'users.no_telp',
-            'anggota.alamat',
-            'anggota.tgl_lahir',
-            'anggota.jenis_kelamin',
-        )
-        ->rightJoin('anggota', 'anggota.anggota_user_id', '=', 'users.user_id')
-        ->where('users.user_id', '=', $id)->first();
+                'users.user_id',
+                'users.email',
+                'users.name',
+                'users.no_ca',
+                'users.no_telp',
+                'detail_akun.alamat',
+                'detail_akun.tgl_lahir',
+                'detail_akun.jenis_kelamin',
+            )
+            ->rightJoin('detail_akun', 'detail_akun.detail_user_id', '=', 'users.user_id')
+            ->where('users.user_id',$id)->first();
 
         return view('backend/anggota/anggota_edit', [
             'title' => 'Ubah Data Anggota | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
@@ -135,46 +146,53 @@ class AnggotaController extends Controller
             'alamat' => 'required',
             'name' => 'required',
             'tgl_lahir' => 'required',
+            'no_ca' => 'required',
             'jenis_kelamin' => 'required',
         ]);
 
+        //dapetin data2 anggota
         $user = User::select(
             'users.user_id',
             'users.email',
             'users.name',
+            'users.no_ca',
             'users.no_telp',
-            'anggota.alamat',
-            'anggota.tgl_lahir',
-            'anggota.jenis_kelamin',
+            'detail_akun.alamat',
+            'detail_akun.tgl_lahir',
+            'detail_akun.jenis_kelamin',
         )
-        ->rightJoin('anggota', 'anggota.anggota_user_id', '=', 'users.user_id')
-        ->where('users.user_id', '=', $id)->first();
+        ->rightJoin('detail_akun', 'detail_akun.detail_user_id', '=', 'users.user_id')
+        ->where('users.user_id',$id)->first();
 
+        //setelah dapetin datanya cek satu2 inputannya apakah ada yg berubah?
         $user->email = $request->email;
         $user->name = $request->name;
         $user->no_telp = $request->no_telp;
         $user->tgl_lahir = $request->tgl_lahir;
+        $user->no_ca = $request->no_ca;
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->alamat = $request->alamat;
 
+        //jika ada yang berubah maka jalankan if isDirty()
         if ($user->isDirty())
         {
-            User::where('user_id', $id)->update([
-                'email' => $request->email,
+            User::where('user_id',$id)->update([
                 'name' => $request->name,
+                'email' => $request->email,
+                'no_ca' => $request->no_ca,
                 'no_telp' => $request->no_telp,
                 'updated_at' => now()
             ]);
 
-            Anggota::where('anggota_user_id', $id)->update([
+            Detail::where('detail_user_id',$id)->update([
                 'tgl_lahir' => $request->tgl_lahir,
+                'alamat' => $request->alamat,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'umur' => now()->format('Y') - Carbon::parse($request->tgl_lahir)->format('Y'),
-                'alamat' => $request->alamat,
-                'updated_at' => now()
+                'updated_at' => now(),
             ]);
 
-            return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Memperbarui Data Anggota.');
+            return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Update Data Anggota.');
         }
 
         return back()->with('error', 'Kamu belum merubah data apapun !');
@@ -192,7 +210,7 @@ class AnggotaController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil Menghapus Data Anggota'
+            'message' => 'Berhasil Menghapus Anggota'
         ]);
     }
 }

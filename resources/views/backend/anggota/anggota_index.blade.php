@@ -10,12 +10,12 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Data Pengguna
+                    Data Anggota
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Pengguna</li>
+                        <li class="breadcrumb-item" aria-current="page">Anggota</li>
                     </ol>
                 </nav>
             </div>
@@ -29,9 +29,9 @@
         <!-- Dynamic Table Full Pagination -->
         <div class="block block-rounded">
             <div class="block-header border-bottom">
-                <h3 class="block-title"><small>List Data</small> Pengguna</h3>
-                    <a href="{{ route('admin.pengguna.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
-                        <i class="fa fa-plus mr-1"></i> Tambah Pengguna
+                <h3 class="block-title"><small>List Data</small> Anggota</h3>
+                    <a href="{{ route('admin.anggota.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
+                        <i class="fa fa-plus mr-1"></i> Tambah Anggota
                     </a>
             </div>
 
@@ -43,7 +43,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Role</th>
+                                <th>No. CA</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -88,12 +88,12 @@ $(document).ready(function(){
                 {targets: 3, className: "text-center", width: "232px"},
             ],
             ajax: {
-                url: '{{ route('admin.pengguna.index') }}',
+                url: '{{ route('admin.anggota.index') }}',
             },
             columns: [
                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                   {data: 'name', name: 'name'},
-                  {data: 'role', name: 'role', orderable: false},
+                  {data: 'no_ca', name: 'no_ca', orderable: false},
                   {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -115,7 +115,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "delete",
                     dataType: 'json',
-                    url: "{{ route('admin.pengguna.destroy','') }}/"+id,
+                    url: "{{ route('admin.anggota.destroy','') }}/"+id,
                     success: function (data) {
                         if (data.success == true)
                         {

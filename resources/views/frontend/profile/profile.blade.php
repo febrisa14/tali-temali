@@ -35,6 +35,10 @@
                                 <input type="email" class="form-control" id="email" name="email" value="{{ $users->email }}">
                             </div>
                             <div class="form-group">
+                                <label>No. CA</label>
+                                <input type="text" class="form-control" id="no_ca" name="no_ca" value="{{ $users->no_ca }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="no_telp">No. Telp</label>
                                 <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $users->no_telp }}">
                             </div>

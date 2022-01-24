@@ -30,7 +30,7 @@
         <div class="block block-rounded">
             <div class="block-header border-bottom">
                 <h3 class="block-title"><small>List Data</small> Materi</h3>
-                    <a href="{{ route('home-jenis') }}" class="btn btn-sm btn-alt-success px-2 py-2 mr-2">
+                    <a href="#" class="btn btn-sm btn-alt-success px-2 py-2 mr-2">
                         <i class="far fa-fw fa-eye mr-1"></i> Lihat Semua Materi
                     </a>
                     <a href="{{ route('admin.materi.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">

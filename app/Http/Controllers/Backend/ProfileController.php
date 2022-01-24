@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use Auth;
-use App\Models\Pengurus;
+use App\Models\Detail;
 use App\Models\User;
 use File;
 use Image;
@@ -22,11 +22,11 @@ class ProfileController extends Controller
                 'users.name',
                 'users.no_telp',
                 'users.email',
-                'pengurus.alamat',
-                'pengurus.tgl_lahir',
-                'pengurus.jenis_kelamin',
+                'detail_akun.alamat',
+                'detail_akun.tgl_lahir',
+                'detail_akun.jenis_kelamin',
             )
-            ->rightJoin('pengurus', 'pengurus.pengurus_user_id', '=', 'users.user_id')
+            ->rightJoin('detail_akun', 'detail_akun.detail_user_id', '=', 'users.user_id')
             ->where('users.user_id', '=', $id)->first();
 
             return view('backend/profile/profile', [
@@ -48,7 +48,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->no_telp = $request->no_telp;
 
-        $pengurus = Pengurus::where('pengurus_user_id', Auth::user()->user_id)
+        $pengurus = Detail::where('detail_user_id', Auth::user()->user_id)
         ->select('tgl_lahir','alamat','jenis_kelamin')->first();
 
         $pengurus->tgl_lahir = $request->tgl_lahir;
@@ -72,7 +72,7 @@ class ProfileController extends Controller
                 'updated_at' => now()
             ]);
 
-            Pengurus::where('pengurus_user_id', Auth::user()->user_id)
+            Detail::where('detail_user_id', Auth::user()->user_id)
             ->update([
                 'tgl_lahir' => $request->tgl_lahir,
                 'alamat' => $request->alamat,

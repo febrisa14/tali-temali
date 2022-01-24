@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jan 2022 pada 03.19
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 7.4.19
+-- Generation Time: Jan 24, 2022 at 05:25 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,31 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
+-- Table structure for table `detail_akun`
 --
 
-CREATE TABLE `anggota` (
-  `anggota_id` int(10) UNSIGNED NOT NULL,
-  `anggota_user_id` int(10) UNSIGNED NOT NULL,
-  `tgl_lahir` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `umur` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `detail_akun` (
+  `detail_user_id` int(10) UNSIGNED NOT NULL,
+  `tgl_lahir` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_kelamin` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `umur` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `anggota`
+-- Dumping data for table `detail_akun`
 --
 
-INSERT INTO `anggota` (`anggota_id`, `anggota_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 1, '18-02-1999', 'Laki - Laki', '23', 'Jalan Tukad Balian', '2021-11-23 07:13:30', '2022-01-01 02:17:46');
+INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, '15-06-1999', 'Laki - Laki', '23', 'Jalan Tukad Balian No. 2', '2021-11-23 07:13:30', '2022-01-24 04:10:00'),
+(2, '15-01-1999', 'Laki - Laki', '22', 'Jalan Raya Sesetan', '2022-01-22 01:12:26', '2022-01-24 04:06:39'),
+(4, '19-11-1997', 'Laki - Laki', '25', 'Jalan Sading', '2022-01-24 04:03:27', '2022-01-24 04:03:39'),
+(6, '11-08-1999', 'Laki - Laki', '23', 'Jalan Raya Sesetan', '2022-01-24 04:20:49', '2022-01-24 04:22:57');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
@@ -64,7 +66,7 @@ CREATE TABLE `materi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
 INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_photo`, `url_video`, `slug`, `created_at`, `updated_at`) VALUES
@@ -80,7 +82,7 @@ INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_phot
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -90,151 +92,103 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (3, '2021_11_21_131616_create_anggota_table', 1),
-(4, '2021_11_26_090736_create_pengurus_table', 2),
-(9, '2021_11_27_145318_create_materi_table', 3);
+(4, '2021_11_27_145318_create_materi_table', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengurus`
---
-
-CREATE TABLE `pengurus` (
-  `pengurus_id` int(10) UNSIGNED NOT NULL,
-  `pengurus_user_id` int(10) UNSIGNED NOT NULL,
-  `tgl_lahir` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `umur` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pengurus`
---
-
-INSERT INTO `pengurus` (`pengurus_id`, `pengurus_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 2, '15-01-1999', 'Laki - Laki', '22', 'Jalan Raya', '2021-11-26 01:12:26', '2021-11-26 01:12:26');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_ca` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_telp` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `role`, `no_telp`, `created_at`, `updated_at`) VALUES
-(1, 'A.A Ngurah Gede Wiyanjana Putra', 'gungde@gmail.com', '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Anggota', '083111234768', '2021-11-23 07:10:33', '2022-01-01 02:17:46'),
-(2, 'I Wayan Saputra', 'saputra@gmail.com', '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Pengurus', '087892848723', '2021-11-26 01:11:12', '2021-11-26 01:11:12');
+INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `no_telp`, `created_at`, `updated_at`) VALUES
+(1, 'A.A Ngurah Gede Wiyanjana Putra', 'gungde@gmail.com', '2021008230', '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Anggota', '083111234768', '2022-01-23 04:20:01', '2022-01-24 04:10:00'),
+(2, 'I Wayan Saputra', 'saputra@gmail.com', NULL, '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Pengurus', '087892848723', '2022-01-21 01:11:12', '2022-01-24 04:06:39'),
+(4, 'Ngurah Bagus Satria', 'ngurah@gmail.com', '2021083728', '$2y$10$QbHimm4HQjAgdSjWmJD3TO9kDEmeKxk97JeGNp8/La8FaRjwfUTmu', 'Anggota', '082938912298', '2022-01-24 04:03:27', '2022-01-24 04:03:39'),
+(6, 'I Gede Surya', 'test@gmail.com', '2022123423', '$2y$10$eG8fVsaKWpSvBL183K.au.CgCHSzlzKH6Mcoxwzop9wlUrIZj/gmu', 'Anggota', '08789283782', '2022-01-24 04:20:49', '2022-01-24 04:22:57');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `anggota`
+-- Indexes for table `detail_akun`
 --
-ALTER TABLE `anggota`
-  ADD PRIMARY KEY (`anggota_id`),
-  ADD KEY `anggota_anggota_user_id_foreign` (`anggota_user_id`);
+ALTER TABLE `detail_akun`
+  ADD KEY `detail_akun_detail_user_id_foreign` (`detail_user_id`);
 
 --
--- Indeks untuk tabel `materi`
+-- Indexes for table `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`materi_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengurus`
---
-ALTER TABLE `pengurus`
-  ADD PRIMARY KEY (`pengurus_id`),
-  ADD KEY `pengurus_pengurus_user_id_foreign` (`pengurus_user_id`);
-
---
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `anggota`
---
-ALTER TABLE `anggota`
-  MODIFY `anggota_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `materi`
+-- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `materi_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `pengurus`
---
-ALTER TABLE `pengurus`
-  MODIFY `pengurus_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `anggota`
+-- Constraints for table `detail_akun`
 --
-ALTER TABLE `anggota`
-  ADD CONSTRAINT `anggota_anggota_user_id_foreign` FOREIGN KEY (`anggota_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `pengurus`
---
-ALTER TABLE `pengurus`
-  ADD CONSTRAINT `pengurus_pengurus_user_id_foreign` FOREIGN KEY (`pengurus_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `detail_akun`
+  ADD CONSTRAINT `detail_akun_detail_user_id_foreign` FOREIGN KEY (`detail_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

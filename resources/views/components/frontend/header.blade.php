@@ -1,5 +1,6 @@
-<header class="site-header site-header--menu-right {{ Request::is('login') ? 'sign-in-menu-1' : '' }} site-header--absolute site-header--sticky">
-      <div class="container">
+{{-- <header class="site-header site-header--menu-right site-header--absolute site-header--sticky"> --}}
+<header class="site-header {{ Request::is('login') || Request::is('kurikulum') || Request::is('kurikulum/*') || Request::is('register') ? 'site-header--menu-right sign-in-menu-1' : 'site-header--menu-center' }} landing-6-menu site-header--absolute site-header--sticky">
+    <div class="container">
         <nav class="navbar site-navbar">
           <!-- Brand Logo-->
           <div class="brand-logo">
@@ -29,23 +30,22 @@
                 <li class="nav-item">
                   <a href="{{ route('home') }}" class="nav-link-item">Beranda</a>
                 </li>
-                @if(Request::is('/'))
-                <li class="nav-item nav-item-has-children">
-                  <a href="#" class="nav-link-item drop-trigger">Tali Temali <i class="fas fa-angle-down"></i>
-                  </a>
-                  <ul class="sub-menu" id="submenu-9">
-                    <li class="sub-menu--item">
-                      <a href="#definisi">Definisi</a>
-                    </li>
-                    <li class="sub-menu--item">
-                      <a href="#jenis">Jenis</a>
-                    </li>
-                  </ul>
+                @if(Request::is('kurikulum/*'))
+                <li class="nav-item">
+                    <a href="{{ route('kurikulum') }}" class="nav-link-item">Kurikulum</a>
                 </li>
                 @endIf
-                <!-- <li class="nav-item">
-                  <a href="#" class="nav-link-item">Tentang</a>
-                </li> -->
+                @if(Request::is('/'))
+                <li class="nav-item">
+                    <a href="#mapala-kompas" class="nav-link-item">Mapala Kompas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('kurikulum') }}" class="nav-link-item">Kurikulum</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link-item">Quiz</a>
+                </li>
+                @endIf
               </ul>
               @endIf
             </nav>
@@ -53,13 +53,13 @@
           @auth
           <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
             @if(Auth::User()->role == 'Pengurus')
-                <a href="{{ route('admin.dashboard') }}" class="btn btn log-in-btn btn-style-02 focus-reset"><i class="si si-home"></i> Admin Dashboard
+                <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
                 </a>
             @else
-                <a href="{{ route('anggota.profile') }}" class="btn btn log-in-btn btn-style-02 focus-reset"><i class="si si-home"></i> Profile
+                <a href="{{ route('anggota.profile') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Profile
                 </a>
             @endIf
-            <a class="btn btn log-in-btn btn-style-02 focus-reset" href="{{ route('logout') }}" onclick="
+            <a class="btn btn btn-style-03 focus-reset" href="{{ route('logout') }}" onclick="
               event.preventDefault();
               document.getElementById('logout-form').submit();
             ">Logout
@@ -70,8 +70,8 @@
           </div>
           @endauth
           @guest
-          <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
-            <a class="btn btn log-in-btn btn-style-02 focus-reset" href="{{ route('login') }}">
+          <div class="header-btn l6-header-btn  ms-auto d-none d-xs-inline-flex">
+            <a class="btn btn btn-style-03 focus-reset" href="{{ route('login') }}">
               Login
             </a>
           </div>

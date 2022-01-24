@@ -2,49 +2,67 @@
 
 @section('content')
 
-    <!-- Sign In Area -->
-    <div class="sign-in-3">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-7 col-md-8 position-static d-none d-lg-block">
-            <div class="inner-page-left-bg">
-              <img src="{{ url('assets/image/scout-rope.jpg') }}" alt="">
-            </div>
-          </div>
-          <div class="col-lg-5 col-md-8">
-            <div class="sign-in-3-box justify-content-lg-end">
-              <div class="heading">
-                <h2>Log in</h2>
-                <p>Masukan detail akun anda</p>
-              </div>
-              <form action="{{ route('login') }}" method="POST">
+<!-- Contact Area -->
+<div class="topics-area-l-12 position-relative overflow-hidden">
+    <div class="contact-l3-image-group">
+      <div class="image-1 d-none d-md-block" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+        <img class="vertical-move" src="{{ url('assets/image/landing-3/con-shape-1.png') }}" alt="image">
+      </div>
+      <div class="image-2 d-none d-lg-block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+        <img class="spin" src="{{ url('assets/image/landing-3/con-shape-2.png') }}" alt="image">
+      </div>
+      <div class="image-3 d-none d-lg-block" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+        <img class="spin" src="{{ url('assets/image/landing-3/con-shape-3.png') }}" alt="image">
+      </div>
+      <div class="image-4 d-none d-md-block" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+        <img class="horizontal-move" src="{{ url('assets/image/landing-3/con-shape-4.png') }}" alt="image">
+      </div>
+      <div class="image-5 d-none d-lg-block" data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000">
+        <img class="spin" src="{{ url('assets/image/landing-3/con-shape-5.png') }}" alt="image">
+      </div>
+      <div class="image-6 d-none d-md-block" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+        <img class="vertical-move" src="{{ url('assets/image/landing-3/con-shape-6.png') }}" alt="image">
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+            <div class="sign-in-1-box justify-content-lg-end">
+                <div class="heading text-center">
+                  <h2 style="color: rgb(32, 31, 31)">Log in</h2>
+                  <p style="color: rgb(32, 31, 31)">Masukan detail akun anda</p>
+                </div>
+                <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                  <label>Email*</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="ex: john@email.com">
-                </div>
-                <div class="form-group">
-                  <label>Password*</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="i.e. IAmthepreciouspass123 ">
-                </div>
-                <div class="keep-sign-area">
-                  <div class="check-form d-inline-block">
-                    <!-- <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
-                      <input class="d-none" type="checkbox" id="terms-check">
-                      <span class="checkbox checkbox-2 rounded-check-box "></span>
-                      <span class="remember-text">Keep me signed in</span>
-                    </label> -->
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Masukan email anda">
                   </div>
-                </div>
-                <div class="sign-in-log-btn">
-                  <button type="submit" class="btn btn-style-03 focus-reset">Masuk</button>
-                </div>
-              </form>
-            </div>
-          </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukan password anda">
+                  </div>
+                  {{-- <div class="keep-sign-area">
+                    <div class="check-form d-inline-block">
+                      <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
+                        <input class="d-none" type="checkbox" id="terms-check">
+                        <span class="checkbox checkbox-2 rounded-check-box "></span>
+                        <span class="remember-text">Keep me signed in</span>
+                      </label>
+                    </div>
+                  </div> --}}
+                  <div class="sign-in-log-btn">
+                    <button class="btn btn btn-style-03 focus-reset">Masuk</button>
+                  </div>
+                  <div class="create-new-acc-text text-center">
+                    <p>Belum punya akun? <a href="{{ route('register') }}">Register</a></p>
+                  </div>
+                </form>
+              </div>
         </div>
       </div>
     </div>
+  </div>
 
 @stop
 

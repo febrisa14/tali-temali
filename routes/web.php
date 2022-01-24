@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 //Frontend Route
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\KurikulumController;
 use App\Http\Controllers\Frontend\JeratController;
 use App\Http\Controllers\Frontend\SimpulController;
 
 //Backend Route
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\PenggunaController;
+use App\Http\Controllers\Backend\AnggotaController;
 use App\Http\Controllers\Backend\MateriController;
 use App\Http\Controllers\Backend\KategoriController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -30,9 +31,14 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/#jenis', [HomeController::class, 'jenis'])->name('home-jenis');
+Route::get('/kurikulum', [KurikulumController::class, 'index'])->name('kurikulum');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/kurikulum/mountenering', [KurikulumController::class, 'mountenering'])->name('mountenering');
+    Route::get('/kurikulum/navigasi-darat', [KurikulumController::class, 'navigasidarat'])->name('navigasidarat');
+    Route::get('/kurikulum/rock-climbing', [KurikulumController::class, 'rockclimbing'])->name('rockclimbing');
+    Route::get('/kurikulum/survival', [KurikulumController::class, 'survival'])->name('survival');
 
     Route::get('/materi_jerat', [JeratController::class, 'index'])->name('materi-jerat');
     Route::get('/materi_jerat/{slug}',[JeratController::class, 'show'])->name('lihat-materi-jerat');
@@ -44,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('pengguna', PenggunaController::class);
+        Route::resource('anggota', AnggotaController::class);
         Route::resource('materi', MateriController::class);
         Route::post('editor/image_upload', [MateriController::class, 'upload'])->name('upload');
         Route::get('/profile',[ProfileController::class, 'index'])->name('profile');

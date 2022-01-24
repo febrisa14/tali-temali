@@ -38,9 +38,9 @@
                 </li>
                 <li class="nav-main-heading">Master Data</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Request::is('admin/pengguna*') ? 'active' : '' }}" href="{{ route('admin.pengguna.index') }}">
+                    <a class="nav-main-link {{ Request::is('admin/anggota*') ? 'active' : '' }}" href="{{ route('admin.anggota.index') }}">
                         <i class="nav-main-link-icon fa fa-users"></i>
-                        <span class="nav-main-link-name">Pengguna</span>
+                        <span class="nav-main-link-name">Anggota</span>
                     </a>
                 </li>
                 <li class="nav-main-item">

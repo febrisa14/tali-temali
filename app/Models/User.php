@@ -7,21 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Anggota;
-use App\Models\Pengurus;
+use App\Models\Detail;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function Anggota()
+    public function Detail()
     {
-        return $this->hasOne(Anggota::class, 'anggota_user_id', 'user_id');
-    }
-
-    public function Pengurus()
-    {
-        return $this->hasOne(Pengurus::class, 'pengurus_user_id', 'user_id');
+        return $this->hasOne(Detail::class, 'detail_user_id', 'user_id');
     }
 
     protected $table = 'users';
@@ -37,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'no_ca',
         'role',
         'no_telp',
     ];

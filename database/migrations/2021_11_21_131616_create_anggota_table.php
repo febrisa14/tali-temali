@@ -13,16 +13,15 @@ class CreateAnggotaTable extends Migration
      */
     public function up()
     {
-        Schema::create('anggota', function (Blueprint $table) {
-            $table->increments('anggota_id');
-            $table->unsignedInteger('anggota_user_id');
+        Schema::create('detail_akun', function (Blueprint $table) {
+            $table->unsignedInteger('detail_user_id');
             $table->string('tgl_lahir', 10);
             $table->string('jenis_kelamin', 12);
             $table->string('umur', 3);
             $table->string('alamat');
             $table->timestamps();
 
-            $table->foreign('anggota_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('detail_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

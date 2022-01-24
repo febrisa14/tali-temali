@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use Auth;
-use App\Models\Anggota;
+use App\Models\Detail;
+use Carbon\Carbon;
 use App\Models\User;
 use File;
 use Image;
@@ -20,13 +21,14 @@ class AnggotaProfileController extends Controller
             (
                 'users.user_id',
                 'users.name',
+                'users.no_ca',
                 'users.no_telp',
                 'users.email',
-                'anggota.alamat',
-                'anggota.tgl_lahir',
-                'anggota.jenis_kelamin',
+                'detail_akun.alamat',
+                'detail_akun.tgl_lahir',
+                'detail_akun.jenis_kelamin',
             )
-            ->rightJoin('anggota', 'anggota.anggota_user_id', '=', 'users.user_id')
+            ->rightJoin('detail_akun', 'detail_akun.detail_user_id', '=', 'users.user_id')
             ->where('users.user_id', '=', $id)->first();
 
             return view('frontend/profile/profile', [
@@ -43,12 +45,13 @@ class AnggotaProfileController extends Controller
         $emailUpdate->email = $request->email; // cek inputan email apakah sama
 
         $user = User::where('user_id', Auth::user()->user_id)
-        ->select('name','no_telp')->first();
+        ->select('name','no_telp', 'no_ca')->first();
 
         $user->name = $request->name;
         $user->no_telp = $request->no_telp;
+        $user->no_ca = $request->no_ca;
 
-        $anggota = Anggota::where('anggota_user_id', Auth::user()->user_id)
+        $anggota = Detail::where('detail_user_id', Auth::user()->user_id)
         ->select('tgl_lahir','alamat','jenis_kelamin')->first();
 
         $anggota->tgl_lahir = $request->tgl_lahir;
@@ -68,13 +71,15 @@ class AnggotaProfileController extends Controller
             User::where('user_id', Auth::user()->user_id)
             ->update([
                 'name' => $request->name,
+                'no_ca' => $request->no_ca,
                 'no_telp' => $request->no_telp,
                 'updated_at' => now()
             ]);
 
-            Anggota::where('anggota_user_id', Auth::user()->user_id)
+            Detail::where('detail_user_id', Auth::user()->user_id)
             ->update([
                 'tgl_lahir' => $request->tgl_lahir,
+                'umur' => now()->format('Y') - Carbon::parse($request->tgl_lahir)->format('Y'),
                 'alamat' => $request->alamat,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'updated_at' => now()
