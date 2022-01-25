@@ -24,7 +24,7 @@
         <img class="vertical-move" src="{{ url('assets/image/landing-3/con-shape-6.png') }}" alt="image">
       </div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
           <div class="sign-in-1-box justify-content-lg-end">

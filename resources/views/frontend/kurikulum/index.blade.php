@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Features Area -->
-<div class="feature-area-l2">
+<div class="feature-area-l2 mt-5">
     <div class="container">
       <div class="row justify-content-lg-between justify-content-center align-items-center text-center text-lg-start">
         <div class="col-xl-4 col-lg-5 col-md-8">

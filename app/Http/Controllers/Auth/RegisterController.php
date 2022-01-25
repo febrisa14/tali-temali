@@ -21,17 +21,6 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        // $request->validate([
-        //     'email' => 'required|email|unique:users',
-        //     'name' => 'required',
-        //     'no_ca' => 'required',
-        //     'password' => 'required',
-        //     'checkbox-1' => 'required',
-        //     'checkbox-2' => 'required',
-        //     'checkbox-3' => 'required',
-        //     'checkbox-4' => 'required',
-        // ]);
-
         $users = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
