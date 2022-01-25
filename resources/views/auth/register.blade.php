@@ -49,6 +49,38 @@
                 <label>Password</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Masukan Password anda">
               </div>
+                <div class="keep-sign-area">
+                    <div class="check-form d-inline-block">
+                        <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
+                        <input type="checkbox" name="checkbox-1" class="checkbox checkbox-2 rounded-check-box">
+                        <span class="remember-text">Saya setuju dengan data pribadi yang dibutuhkan dalam pembuatan akun.</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="keep-sign-area">
+                    <div class="check-form d-inline-block">
+                        <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
+                        <input type="checkbox" name="checkbox-2" class="checkbox checkbox-2 rounded-check-box">
+                        <span class="remember-text">Saya setuju untuk tidak menjadikan materi dalam website sebagai keperluan komersial.</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="keep-sign-area">
+                    <div class="check-form d-inline-block">
+                        <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
+                        <input type="checkbox" name="checkbox-3" class="checkbox checkbox-2 rounded-check-box">
+                        <span class="remember-text">Bersedia untuk ikut berkontribusi dalam membantu menyebarluaskan materi guna membantu mahasiswa stikom dan masyarakat umum.</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="keep-sign-area">
+                    <div class="check-form d-inline-block">
+                        <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
+                        <input type="checkbox" name="checkbox-4" class="checkbox checkbox-2 rounded-check-box">
+                        <span class="remember-text">Saya setuju dengan syarat-syarat keanggotaan UKM Mapala Kompas Stikom Bali.</span>
+                        </label>
+                    </div>
+                </div>
               <div class="sign-in-log-btn">
                 <button class="btn btn btn-style-03 focus-reset">Register</button>
               </div>
@@ -60,3 +92,51 @@
   </div>
 
 @stop
+
+@push('scripts')
+
+@if ($message = Session::get('success'))
+<script>
+    iziToast.success({
+        title: 'Success',
+        message: '{{$message}}',
+        position: 'topCenter'
+    });
+</script>
+@endif
+
+{{-- @if ($message = Session::get('failed'))
+<script>
+iziToast.warning({
+    title: 'Login Gagal',
+    message: '{{$message}}',
+    position: 'bottomRight'
+});
+</script>
+@endif --}}
+
+<!-- iziToast Error Tampil -->
+@if ($errors->any)
+    @foreach ($errors->all() as $message)
+    <script>
+        iziToast.error({
+            title: 'Login Gagal',
+            message: '{{ $message }}',
+            position: 'bottomRight',
+        });
+    </script>
+    @endforeach
+@endif
+
+@if ($message = Session::get('failed'))
+<script>
+iziToast.warning({
+    title: 'Login Gagal',
+    message: '{{$message}}',
+    position: 'bottomRight'
+});
+</script>
+
+@endIf
+
+@endpush

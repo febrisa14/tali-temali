@@ -28,9 +28,8 @@
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
             <div class="sign-in-1-box justify-content-lg-end">
-                <div class="heading text-center">
-                  <h2 style="color: rgb(32, 31, 31)">Log in</h2>
-                  <p style="color: rgb(32, 31, 31)">Masukan detail akun anda</p>
+                <div class="section__heading-3 text-center">
+                    <h2>Log in</h2>
                 </div>
                 <form action="{{ route('login') }}" method="POST">
                 @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use Hash;
 use App\Models\User;
 use App\Models\Detail;
@@ -18,14 +19,18 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|unique:users',
-            'name' => 'required',
-            'no_ca' => 'required',
-            'password' => 'required'
-        ]);
+        // $request->validate([
+        //     'email' => 'required|email|unique:users',
+        //     'name' => 'required',
+        //     'no_ca' => 'required',
+        //     'password' => 'required',
+        //     'checkbox-1' => 'required',
+        //     'checkbox-2' => 'required',
+        //     'checkbox-3' => 'required',
+        //     'checkbox-4' => 'required',
+        // ]);
 
         $users = User::create([
             'email' => $request->email,
