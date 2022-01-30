@@ -2,14 +2,14 @@
 <div class="content-area-l5-2" id="definisi">
     <div class="container">
       <div class="row justify-content-lg-start justify-content-center align-items-center">
-        <div class="col-xl-5 col-lg-6 col-md-10" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+        <div class="col-xl-5 col-lg-6 col-md-10">
           <div class="content-l5-2-image">
             <div class="image-box image-hover-style-01 overflow-hidden ">
               <img class="w-100" height="530" src="{{ url('assets/image/scout-rope.jpg') }}" alt="image">
             </div>
           </div>
         </div>
-        <div class="offset-xl-1 col-xl-5 col-lg-6 col-md-10" data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000">
+        <div class="offset-xl-1 col-xl-5 col-lg-6 col-md-10">
           <div class="content-l5-2-content">
             <h2>Definisi Tali Temali</h2>
             <p>Tali Temali adalah salah satu seni menyambung tali dengan menggunakan simpul-simpul sehingga membentuk suatu alat atau benda lain yang bermanfaat. Simpul dibagi menjadi 2 yaitu simpul itu sendiri (knot) dan jerat (hitch). Salah satu bagian yang harus dikuasai oleh seorang penggiat di ketinggian adalah pengetahuan tentang simpul dan kemampuan membuat simpul dengan mudah dan cepat.</p>

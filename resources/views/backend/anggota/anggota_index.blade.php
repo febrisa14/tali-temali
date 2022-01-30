@@ -82,10 +82,10 @@ $(document).ready(function(){
             serverSide: true,
             autowidth: true,
             columnDefs: [
-                {targets: 0, className: "text-center", width: "32px"},
-                {targets: 1, width: "224px"},
-                {targets: 2, className: "text-center", width: "94px"},
-                {targets: 3, className: "text-center", width: "232px"},
+                {targets: 0, className: "text-center"},
+                {targets: 1, className: "text-center"},
+                {targets: 2, className: "text-center"},
+                {targets: 3, className: "text-center"},
             ],
             ajax: {
                 url: '{{ route('admin.anggota.index') }}',
@@ -102,7 +102,7 @@ $(document).ready(function(){
     $(document).on('click', '.delete', function (){
         var id = $(this).data("id");
         Swal.fire({
-            title: 'Hapus Data Pengguna?',
+            title: 'Hapus Data Anggota?',
             text: 'Klik "Iya" untuk menghapus data',
             icon: 'warning',
             showCancelButton: true,

@@ -1,5 +1,5 @@
 {{-- <header class="site-header site-header--menu-right site-header--absolute site-header--sticky"> --}}
-<header class="site-header {{ Request::is('login') || Request::is('kurikulum') || Request::is('kurikulum/*') || Request::is('register') ? 'site-header--menu-right sign-in-menu-1' : 'site-header--menu-center' }} landing-6-menu site-header--absolute site-header--sticky">
+<header class="site-header {{ Request::is('login') || Request::is('kurikulum') || Request::is('kurikulum/*') || Request::is('materi_jerat') || Request::is('materi_jerat/*') || Request::is('materi_simpul') || Request::is('materi_simpul/*') || Request::is('register') ? 'site-header--menu-right sign-in-menu-1' : 'site-header--menu-center' }} landing-6-menu site-header--absolute site-header--sticky">
     <div class="container">
         <nav class="navbar site-navbar">
           <!-- Brand Logo-->
@@ -43,7 +43,7 @@
                     <a href="{{ route('kurikulum') }}" class="nav-link-item">Kurikulum</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link-item">Quiz</a>
+                    <a href="{{ route('anggota.quiz.index') }}" class="nav-link-item">Quiz</a>
                 </li>
                 @endIf
               </ul>

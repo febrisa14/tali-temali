@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\KurikulumController;
 use App\Http\Controllers\Frontend\JeratController;
 use App\Http\Controllers\Frontend\SimpulController;
+use App\Http\Controllers\Frontend\QuizzesController;
 
 //Backend Route
 use App\Http\Controllers\Backend\DashboardController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\Backend\KategoriController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\AnggotaProfileController;
 use App\Http\Controllers\Backend\PasswordController;
+use App\Http\Controllers\Exam\QuizController;
+use App\Http\Controllers\Exam\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +55,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('anggota', AnggotaController::class);
         Route::resource('materi', MateriController::class);
+
+        //Route Quiz
+        Route::resource('quiz', QuizController::class);
+
+        //Route Question
+        Route::resource('quiz/{id}/question', QuestionController::class)->except(['destroy','update','store']);
+        Route::resource('question', QuestionController::class)->only(['destroy','update','store']);
+
         Route::post('editor/image_upload', [MateriController::class, 'upload'])->name('upload');
         Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
         Route::post('/change_profile', [ProfileController::class, 'updateProfile'])->name('change_profile');
@@ -59,11 +70,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/change_password', [PasswordController::class, 'changePassword'])->name('change_password');
 
+    //Route Anggota
     Route::middleware(['anggota'])->prefix('anggota')->name('anggota.')->group(function () {
 
         Route::get('/profile', [AnggotaProfileController::class, 'index'])->name('profile');
         Route::post('/change_profile', [AnggotaProfileController::class, 'updateProfile'])->name('change_profile');
 
+        Route::get('quiz', [QuizzesController::class, 'index'])->name('quiz.index');
+        Route::get('quiz-start/{id}',[QuizzesController::class, 'mulaiQuiz'])->name('quiz.mulai');
+        Route::post('quiz',[QuizzesController::class, 'submitQuiz'])->name('quiz.submit');
     });
 
 });

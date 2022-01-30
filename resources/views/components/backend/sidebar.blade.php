@@ -49,6 +49,12 @@
                         <span class="nav-main-link-name">Materi</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Request::is('admin/quiz*') ? 'active' : '' }}" href="{{ route('admin.quiz.index') }}">
+                        <i class="nav-main-link-icon fa fa-list-alt"></i>
+                        <span class="nav-main-link-name">Quiz</span>
+                    </a>
+                </li>
                 <li class="nav-main-heading">Akun</li>
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Request::is('admin/profile*') ? 'active' : '' }}" href="{{ route('admin.profile') }}">
@@ -76,12 +82,21 @@
                     </a>
                 </li>
                 <li class="nav-main-heading">Akun</li>
+                @if (Request::is('anggota/profile*'))
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Request::is('anggota/profile*') ? 'active' : '' }}" href="{{ route('anggota.profile') }}">
                         <i class="nav-main-link-icon fas fa-user"></i>
                         <span class="nav-main-link-name">Profile</span>
                     </a>
                 </li>
+                @else
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Request::is('anggota/quiz*') ? 'active' : '' }}" href="{{ route('anggota.quiz.index') }}">
+                        <i class="nav-main-link-icon fa fa-list-alt"></i>
+                        <span class="nav-main-link-name">Quiz</span>
+                    </a>
+                </li>
+                @endIf
             </ul>
         </div>
         <!-- END Side Navigation -->

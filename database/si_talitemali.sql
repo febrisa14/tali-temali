@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 05:25 AM
+-- Generation Time: Jan 30, 2022 at 05:09 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -46,6 +46,23 @@ INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur
 (2, '15-01-1999', 'Laki - Laki', '22', 'Jalan Raya Sesetan', '2022-01-22 01:12:26', '2022-01-24 04:06:39'),
 (4, '19-11-1997', 'Laki - Laki', '25', 'Jalan Sading', '2022-01-24 04:03:27', '2022-01-24 04:03:39'),
 (6, '11-08-1999', 'Laki - Laki', '23', 'Jalan Raya Sesetan', '2022-01-24 04:20:49', '2022-01-24 04:22:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exams`
+--
+
+CREATE TABLE `exams` (
+  `exam_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `question_id` int(10) UNSIGNED NOT NULL,
+  `ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -99,7 +116,133 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (3, '2021_11_21_131616_create_anggota_table', 1),
-(4, '2021_11_27_145318_create_materi_table', 1);
+(4, '2021_11_27_145318_create_materi_table', 1),
+(5, '2022_01_28_111112_create_quizzes_table', 2),
+(6, '2022_01_29_114012_create_questions_table', 3),
+(7, '2022_01_29_152533_create_options_table', 4),
+(8, '2022_01_30_115852_create_exams_table', 5),
+(9, '2022_01_30_120000_create_results_table', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `options`
+--
+
+CREATE TABLE `options` (
+  `option_id` int(10) UNSIGNED NOT NULL,
+  `question_id` int(10) UNSIGNED NOT NULL,
+  `option` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `options`
+--
+
+INSERT INTO `options` (`option_id`, `question_id`, `option`, `status`, `created_at`, `updated_at`) VALUES
+(11, 5, 'gajah', NULL, NULL, NULL),
+(12, 5, 'anjing', NULL, NULL, NULL),
+(13, 5, 'kerbau', NULL, NULL, NULL),
+(14, 5, 'kucin', NULL, NULL, NULL),
+(15, 6, 'benar', NULL, NULL, NULL),
+(16, 6, 'salah', NULL, NULL, NULL),
+(17, 6, 'anjing', NULL, NULL, NULL),
+(18, 6, 'kucing', NULL, NULL, NULL),
+(19, 7, 'lemari', NULL, NULL, NULL),
+(20, 7, 'sofa', NULL, NULL, NULL),
+(21, 7, 'bunga', NULL, NULL, NULL),
+(22, 7, 'jepun', NULL, NULL, NULL),
+(23, 8, 'awan', NULL, NULL, NULL),
+(24, 8, 'sepatu', NULL, NULL, NULL),
+(25, 8, 'meja', NULL, NULL, NULL),
+(26, 8, 'kuris', NULL, NULL, NULL),
+(27, 9, 'mantan', NULL, NULL, NULL),
+(28, 9, 'pacar', NULL, NULL, NULL),
+(29, 9, 'orang', NULL, NULL, NULL),
+(30, 9, 'manusia', NULL, NULL, NULL),
+(31, 10, 'Cafe', NULL, NULL, NULL),
+(32, 10, 'Bar', NULL, NULL, NULL),
+(33, 10, 'Oyo', NULL, NULL, NULL),
+(34, 10, 'Hotel', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `question_id` int(10) UNSIGNED NOT NULL,
+  `quiz_id` int(10) UNSIGNED NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `status`, `options`, `user_id`, `created_at`, `updated_at`) VALUES
+(5, 2, 'Salah satu jenis binatang rumahan, kecuali', 'gajah', NULL, NULL, NULL, '2022-01-29 12:29:30', '2022-01-29 12:29:30'),
+(6, 2, 'pertanyaan 2', 'benar', NULL, NULL, NULL, '2022-01-29 13:25:21', '2022-01-29 13:25:21'),
+(7, 2, 'pertanyaan 3', 'sofa', NULL, NULL, NULL, '2022-01-29 13:26:08', '2022-01-29 13:26:08'),
+(8, 2, 'pertanyaan 4', 'awan', NULL, NULL, NULL, '2022-01-29 13:27:03', '2022-01-29 13:27:03'),
+(9, 2, 'pertanyaan 5', 'orang', NULL, NULL, NULL, '2022-01-29 13:27:31', '2022-01-29 13:27:31'),
+(10, 1, 'orang gagal bercinta harusnya kemana?', 'Oyo', NULL, NULL, NULL, '2022-01-30 03:35:55', '2022-01-30 03:35:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizzes`
+--
+
+CREATE TABLE `quizzes` (
+  `quiz_id` int(10) UNSIGNED NOT NULL,
+  `quiz_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quiz_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quiz_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number_of_question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quizzes`
+--
+
+INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `description`, `quiz_date`, `quiz_time`, `number_of_question`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Tali Temali', 'Quiz tentang Tali Temali', '29-01-2022', '10:00', '10', '1', '2022-01-28 05:49:37', '2022-01-28 05:49:37'),
+(2, 'Survival', 'Quiz tentang Survival', '29-01-2022', '05:00', '5', '1', '2022-01-29 03:44:33', '2022-01-29 03:44:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE `results` (
+  `result_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `quiz_id` int(10) UNSIGNED NOT NULL,
+  `total_mark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `yes_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `result_json` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -140,6 +283,14 @@ ALTER TABLE `detail_akun`
   ADD KEY `detail_akun_detail_user_id_foreign` (`detail_user_id`);
 
 --
+-- Indexes for table `exams`
+--
+ALTER TABLE `exams`
+  ADD PRIMARY KEY (`exam_id`),
+  ADD KEY `exams_question_id_foreign` (`question_id`),
+  ADD KEY `exams_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `materi`
 --
 ALTER TABLE `materi`
@@ -150,6 +301,34 @@ ALTER TABLE `materi`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `options`
+--
+ALTER TABLE `options`
+  ADD PRIMARY KEY (`option_id`),
+  ADD KEY `options_question_id_foreign` (`question_id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`question_id`),
+  ADD KEY `questions_quiz_id_foreign` (`quiz_id`);
+
+--
+-- Indexes for table `quizzes`
+--
+ALTER TABLE `quizzes`
+  ADD PRIMARY KEY (`quiz_id`);
+
+--
+-- Indexes for table `results`
+--
+ALTER TABLE `results`
+  ADD PRIMARY KEY (`result_id`),
+  ADD KEY `results_quiz_id_foreign` (`quiz_id`),
+  ADD KEY `results_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -163,6 +342,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `exams`
+--
+ALTER TABLE `exams`
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
@@ -172,13 +357,37 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `options`
+--
+ALTER TABLE `options`
+  MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `quizzes`
+--
+ALTER TABLE `quizzes`
+  MODIFY `quiz_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `results`
+--
+ALTER TABLE `results`
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -189,6 +398,32 @@ ALTER TABLE `users`
 --
 ALTER TABLE `detail_akun`
   ADD CONSTRAINT `detail_akun_detail_user_id_foreign` FOREIGN KEY (`detail_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `exams`
+--
+ALTER TABLE `exams`
+  ADD CONSTRAINT `exams_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `exams_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `options`
+--
+ALTER TABLE `options`
+  ADD CONSTRAINT `options_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `results`
+--
+ALTER TABLE `results`
+  ADD CONSTRAINT `results_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `results_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

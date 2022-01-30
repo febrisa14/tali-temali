@@ -30,8 +30,8 @@
         <div class="block block-rounded">
             <div class="block-header border-bottom">
                 <h3 class="block-title"><small>List Data</small> Materi</h3>
-                    <a href="#" class="btn btn-sm btn-alt-success px-2 py-2 mr-2">
-                        <i class="far fa-fw fa-eye mr-1"></i> Lihat Semua Materi
+                    <a href="{{ route('rockclimbing') }}" class="btn btn-sm btn-alt-success px-2 py-2 mr-2">
+                        <i class="far fa-fw fa-eye mr-1"></i> Lihat Semua Materi Tali Temali
                     </a>
                     <a href="{{ route('admin.materi.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
                         <i class="fa fa-plus mr-1"></i> Tambah Materi
@@ -85,10 +85,10 @@ $(document).ready(function(){
             serverSide: true,
             autowidth: true,
             columnDefs: [
-                {targets: 0, className: "text-center", width: "32px"},
-                {targets: 1, className: "text-center", width: "224px"},
-                {targets: 2, className: "text-center", width: "94px"},
-                {targets: 3, className: "text-center", width: "94px"},
+                {targets: 0, className: "text-center"},
+                {targets: 1, className: "text-center"},
+                {targets: 2, className: "text-center"},
+                {targets: 3, className: "text-center"},
             ],
             ajax: {
                 url: '{{ route('admin.materi.index') }}',
