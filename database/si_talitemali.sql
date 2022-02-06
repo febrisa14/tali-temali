@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Feb 2022 pada 01.38
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 7.4.19
+-- Generation Time: Feb 06, 2022 at 01:43 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_akun`
+-- Table structure for table `detail_akun`
 --
 
 CREATE TABLE `detail_akun` (
@@ -38,7 +38,7 @@ CREATE TABLE `detail_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `detail_akun`
+-- Dumping data for table `detail_akun`
 --
 
 INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `exams`
+-- Table structure for table `exams`
 --
 
 CREATE TABLE `exams` (
@@ -60,7 +60,6 @@ CREATE TABLE `exams` (
   `question_id` int(10) UNSIGNED NOT NULL,
   `ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -68,7 +67,7 @@ CREATE TABLE `exams` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
@@ -84,7 +83,7 @@ CREATE TABLE `materi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
 INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_photo`, `url_video`, `slug`, `created_at`, `updated_at`) VALUES
@@ -100,7 +99,7 @@ INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_phot
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -110,7 +109,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -127,52 +126,47 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `options`
+-- Table structure for table `options`
 --
 
 CREATE TABLE `options` (
   `option_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(10) UNSIGNED NOT NULL,
   `option` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `options`
+-- Dumping data for table `options`
 --
 
-INSERT INTO `options` (`option_id`, `question_id`, `option`, `status`, `created_at`, `updated_at`) VALUES
-(11, 5, 'gajah', NULL, NULL, NULL),
-(12, 5, 'anjing', NULL, NULL, NULL),
-(13, 5, 'kerbau', NULL, NULL, NULL),
-(14, 5, 'kucin', NULL, NULL, NULL),
-(15, 6, 'benar', NULL, NULL, NULL),
-(16, 6, 'salah', NULL, NULL, NULL),
-(17, 6, 'anjing', NULL, NULL, NULL),
-(18, 6, 'kucing', NULL, NULL, NULL),
-(19, 7, 'lemari', NULL, NULL, NULL),
-(20, 7, 'sofa', NULL, NULL, NULL),
-(21, 7, 'bunga', NULL, NULL, NULL),
-(22, 7, 'jepun', NULL, NULL, NULL),
-(23, 8, 'awan', NULL, NULL, NULL),
-(24, 8, 'sepatu', NULL, NULL, NULL),
-(25, 8, 'meja', NULL, NULL, NULL),
-(26, 8, 'kuris', NULL, NULL, NULL),
-(27, 9, 'mantan', NULL, NULL, NULL),
-(28, 9, 'pacar', NULL, NULL, NULL),
-(29, 9, 'orang', NULL, NULL, NULL),
-(30, 9, 'manusia', NULL, NULL, NULL),
-(31, 10, 'Cafe', NULL, NULL, NULL),
-(32, 10, 'Bar', NULL, NULL, NULL),
-(33, 10, 'Oyo', NULL, NULL, NULL),
-(34, 10, 'Hotel', NULL, NULL, NULL);
+INSERT INTO `options` (`option_id`, `question_id`, `option`, `created_at`, `updated_at`) VALUES
+(11, 5, 'gajah', NULL, NULL),
+(12, 5, 'anjing', NULL, NULL),
+(13, 5, 'kerbau', NULL, NULL),
+(14, 5, 'kucing', NULL, '2022-02-05 12:41:09'),
+(15, 6, 'benar', NULL, NULL),
+(16, 6, 'salah', NULL, NULL),
+(17, 6, 'anjing', NULL, NULL),
+(18, 6, 'kucing', NULL, NULL),
+(35, 11, 'kuluk', NULL, NULL),
+(36, 11, 'sampi', NULL, NULL),
+(37, 11, 'kebo', NULL, NULL),
+(38, 11, 'anjing', NULL, NULL),
+(47, 14, 'pertama', NULL, NULL),
+(48, 14, 'kedelapan', NULL, NULL),
+(49, 14, 'ketujuh', NULL, NULL),
+(50, 14, 'kelima', NULL, NULL),
+(51, 15, 'balian', NULL, NULL),
+(52, 15, 'dokter', NULL, NULL),
+(53, 15, 'rumah sakit', NULL, NULL),
+(54, 15, 'klinik', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `questions`
+-- Table structure for table `questions`
 --
 
 CREATE TABLE `questions` (
@@ -180,55 +174,48 @@ CREATE TABLE `questions` (
   `quiz_id` int(10) UNSIGNED NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `answer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `options` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `questions`
+-- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `status`, `options`, `user_id`, `created_at`, `updated_at`) VALUES
-(5, 2, 'Salah satu jenis binatang rumahan, kecuali', 'gajah', NULL, NULL, NULL, '2022-01-29 12:29:30', '2022-01-29 12:29:30'),
-(6, 2, 'pertanyaan 2', 'benar', NULL, NULL, NULL, '2022-01-29 13:25:21', '2022-01-29 13:25:21'),
-(7, 2, 'pertanyaan 3', 'sofa', NULL, NULL, NULL, '2022-01-29 13:26:08', '2022-01-29 13:26:08'),
-(8, 2, 'pertanyaan 4', 'awan', NULL, NULL, NULL, '2022-01-29 13:27:03', '2022-01-29 13:27:03'),
-(9, 2, 'pertanyaan 5', 'orang', NULL, NULL, NULL, '2022-01-29 13:27:31', '2022-01-29 13:27:31'),
-(10, 1, 'orang gagal bercinta harusnya kemana?', 'Oyo', NULL, NULL, NULL, '2022-01-30 03:35:55', '2022-01-30 03:35:55');
+INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
+(5, 2, 'Salah satu jenis binatang rumahan, kecuali', 'gajah', '2022-01-29 12:29:30', '2022-02-05 12:41:09'),
+(6, 2, 'pertanyaan 2', 'benar', '2022-01-29 13:25:21', '2022-01-29 13:25:21'),
+(11, 2, 'pertanyaan 3', 'kuluk', '2022-02-05 13:03:59', '2022-02-05 13:03:59'),
+(14, 2, 'naruto termasuk hokage ke berapa?', 'kedelapan', '2022-02-05 13:08:05', '2022-02-05 13:08:05'),
+(15, 2, 'orang berobat harusnya ke?', 'balian', '2022-02-05 13:08:30', '2022-02-05 13:08:30');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `quizzes`
+-- Table structure for table `quizzes`
 --
 
 CREATE TABLE `quizzes` (
   `quiz_id` int(10) UNSIGNED NOT NULL,
   `quiz_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `quiz_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `quiz_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `number_of_question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `quizzes`
+-- Dumping data for table `quizzes`
 --
 
-INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `description`, `quiz_date`, `quiz_time`, `number_of_question`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Tali Temali', 'Quiz tentang Tali Temali', '29-01-2022', '10:00', '10', '1', '2022-01-28 05:49:37', '2022-01-28 05:49:37'),
-(2, 'Survival', 'Quiz tentang Survival', '29-01-2022', '02:30', '5', '1', '2022-01-29 03:44:33', '2022-01-29 03:44:33');
+INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `description`, `quiz_time`, `number_of_question`, `created_at`, `updated_at`) VALUES
+(2, 'Survival', 'Quiz tentang Survival', '5', '5', '2022-01-29 03:44:33', '2022-02-05 11:22:44');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `results`
+-- Table structure for table `results`
 --
 
 CREATE TABLE `results` (
@@ -240,7 +227,8 @@ CREATE TABLE `results` (
   `no_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `result_json` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl_exp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl_selesai` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -248,7 +236,7 @@ CREATE TABLE `results` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -264,7 +252,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `no_telp`, `created_at`, `updated_at`) VALUES
@@ -278,13 +266,13 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `n
 --
 
 --
--- Indeks untuk tabel `detail_akun`
+-- Indexes for table `detail_akun`
 --
 ALTER TABLE `detail_akun`
   ADD KEY `detail_akun_detail_user_id_foreign` (`detail_user_id`);
 
 --
--- Indeks untuk tabel `exams`
+-- Indexes for table `exams`
 --
 ALTER TABLE `exams`
   ADD PRIMARY KEY (`exam_id`),
@@ -293,39 +281,39 @@ ALTER TABLE `exams`
   ADD KEY `exams_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `materi`
+-- Indexes for table `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`materi_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `options`
+-- Indexes for table `options`
 --
 ALTER TABLE `options`
   ADD PRIMARY KEY (`option_id`),
   ADD KEY `options_question_id_foreign` (`question_id`);
 
 --
--- Indeks untuk tabel `questions`
+-- Indexes for table `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`question_id`),
   ADD KEY `questions_quiz_id_foreign` (`quiz_id`);
 
 --
--- Indeks untuk tabel `quizzes`
+-- Indexes for table `quizzes`
 --
 ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`quiz_id`);
 
 --
--- Indeks untuk tabel `results`
+-- Indexes for table `results`
 --
 ALTER TABLE `results`
   ADD PRIMARY KEY (`result_id`),
@@ -333,76 +321,76 @@ ALTER TABLE `results`
   ADD KEY `results_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `exams`
+-- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT untuk tabel `materi`
+-- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `materi_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `options`
+-- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT untuk tabel `questions`
+-- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `quizzes`
+-- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
   MODIFY `quiz_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `results`
+-- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_akun`
+-- Constraints for table `detail_akun`
 --
 ALTER TABLE `detail_akun`
   ADD CONSTRAINT `detail_akun_detail_user_id_foreign` FOREIGN KEY (`detail_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `exams`
+-- Constraints for table `exams`
 --
 ALTER TABLE `exams`
   ADD CONSTRAINT `exams_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -410,19 +398,19 @@ ALTER TABLE `exams`
   ADD CONSTRAINT `exams_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `options`
+-- Constraints for table `options`
 --
 ALTER TABLE `options`
   ADD CONSTRAINT `options_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `questions`
+-- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `results`
+-- Constraints for table `results`
 --
 ALTER TABLE `results`
   ADD CONSTRAINT `results_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,
