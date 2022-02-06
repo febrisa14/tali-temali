@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2022 at 05:09 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.19
+-- Waktu pembuatan: 01 Feb 2022 pada 01.38
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_akun`
+-- Struktur dari tabel `detail_akun`
 --
 
 CREATE TABLE `detail_akun` (
@@ -38,7 +38,7 @@ CREATE TABLE `detail_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `detail_akun`
+-- Dumping data untuk tabel `detail_akun`
 --
 
 INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
@@ -50,12 +50,13 @@ INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur
 -- --------------------------------------------------------
 
 --
--- Table structure for table `exams`
+-- Struktur dari tabel `exams`
 --
 
 CREATE TABLE `exams` (
   `exam_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  `quiz_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(10) UNSIGNED NOT NULL,
   `ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_ans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -67,7 +68,7 @@ CREATE TABLE `exams` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `materi`
+-- Struktur dari tabel `materi`
 --
 
 CREATE TABLE `materi` (
@@ -83,7 +84,7 @@ CREATE TABLE `materi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `materi`
+-- Dumping data untuk tabel `materi`
 --
 
 INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_photo`, `url_video`, `slug`, `created_at`, `updated_at`) VALUES
@@ -99,7 +100,7 @@ INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_phot
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -109,7 +110,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -120,13 +121,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_01_28_111112_create_quizzes_table', 2),
 (6, '2022_01_29_114012_create_questions_table', 3),
 (7, '2022_01_29_152533_create_options_table', 4),
-(8, '2022_01_30_115852_create_exams_table', 5),
-(9, '2022_01_30_120000_create_results_table', 6);
+(10, '2022_01_30_115852_create_exams_table', 5),
+(11, '2022_01_30_120000_create_results_table', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `options`
+-- Struktur dari tabel `options`
 --
 
 CREATE TABLE `options` (
@@ -139,7 +140,7 @@ CREATE TABLE `options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `options`
+-- Dumping data untuk tabel `options`
 --
 
 INSERT INTO `options` (`option_id`, `question_id`, `option`, `status`, `created_at`, `updated_at`) VALUES
@@ -171,7 +172,7 @@ INSERT INTO `options` (`option_id`, `question_id`, `option`, `status`, `created_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questions`
+-- Struktur dari tabel `questions`
 --
 
 CREATE TABLE `questions` (
@@ -187,7 +188,7 @@ CREATE TABLE `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `questions`
+-- Dumping data untuk tabel `questions`
 --
 
 INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `status`, `options`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -201,7 +202,7 @@ INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `status
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quizzes`
+-- Struktur dari tabel `quizzes`
 --
 
 CREATE TABLE `quizzes` (
@@ -217,17 +218,17 @@ CREATE TABLE `quizzes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `quizzes`
+-- Dumping data untuk tabel `quizzes`
 --
 
 INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `description`, `quiz_date`, `quiz_time`, `number_of_question`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Tali Temali', 'Quiz tentang Tali Temali', '29-01-2022', '10:00', '10', '1', '2022-01-28 05:49:37', '2022-01-28 05:49:37'),
-(2, 'Survival', 'Quiz tentang Survival', '29-01-2022', '05:00', '5', '1', '2022-01-29 03:44:33', '2022-01-29 03:44:33');
+(2, 'Survival', 'Quiz tentang Survival', '29-01-2022', '02:30', '5', '1', '2022-01-29 03:44:33', '2022-01-29 03:44:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `results`
+-- Struktur dari tabel `results`
 --
 
 CREATE TABLE `results` (
@@ -247,7 +248,7 @@ CREATE TABLE `results` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -263,7 +264,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `no_telp`, `created_at`, `updated_at`) VALUES
@@ -277,53 +278,54 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `n
 --
 
 --
--- Indexes for table `detail_akun`
+-- Indeks untuk tabel `detail_akun`
 --
 ALTER TABLE `detail_akun`
   ADD KEY `detail_akun_detail_user_id_foreign` (`detail_user_id`);
 
 --
--- Indexes for table `exams`
+-- Indeks untuk tabel `exams`
 --
 ALTER TABLE `exams`
   ADD PRIMARY KEY (`exam_id`),
+  ADD KEY `exams_quiz_id_foreign` (`quiz_id`),
   ADD KEY `exams_question_id_foreign` (`question_id`),
   ADD KEY `exams_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `materi`
+-- Indeks untuk tabel `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`materi_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `options`
+-- Indeks untuk tabel `options`
 --
 ALTER TABLE `options`
   ADD PRIMARY KEY (`option_id`),
   ADD KEY `options_question_id_foreign` (`question_id`);
 
 --
--- Indexes for table `questions`
+-- Indeks untuk tabel `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`question_id`),
   ADD KEY `questions_quiz_id_foreign` (`quiz_id`);
 
 --
--- Indexes for table `quizzes`
+-- Indeks untuk tabel `quizzes`
 --
 ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`quiz_id`);
 
 --
--- Indexes for table `results`
+-- Indeks untuk tabel `results`
 --
 ALTER TABLE `results`
   ADD PRIMARY KEY (`result_id`),
@@ -331,95 +333,96 @@ ALTER TABLE `results`
   ADD KEY `results_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `exams`
+-- AUTO_INCREMENT untuk tabel `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `materi`
+-- AUTO_INCREMENT untuk tabel `materi`
 --
 ALTER TABLE `materi`
   MODIFY `materi_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `options`
+-- AUTO_INCREMENT untuk tabel `options`
 --
 ALTER TABLE `options`
   MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `questions`
+-- AUTO_INCREMENT untuk tabel `questions`
 --
 ALTER TABLE `questions`
   MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `quizzes`
+-- AUTO_INCREMENT untuk tabel `quizzes`
 --
 ALTER TABLE `quizzes`
   MODIFY `quiz_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `results`
+-- AUTO_INCREMENT untuk tabel `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `detail_akun`
+-- Ketidakleluasaan untuk tabel `detail_akun`
 --
 ALTER TABLE `detail_akun`
   ADD CONSTRAINT `detail_akun_detail_user_id_foreign` FOREIGN KEY (`detail_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `exams`
+-- Ketidakleluasaan untuk tabel `exams`
 --
 ALTER TABLE `exams`
   ADD CONSTRAINT `exams_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `exams_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exams_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `options`
+-- Ketidakleluasaan untuk tabel `options`
 --
 ALTER TABLE `options`
   ADD CONSTRAINT `options_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `questions`
+-- Ketidakleluasaan untuk tabel `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `results`
+-- Ketidakleluasaan untuk tabel `results`
 --
 ALTER TABLE `results`
   ADD CONSTRAINT `results_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,

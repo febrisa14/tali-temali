@@ -17,7 +17,7 @@ class CreateQuizzesTable extends Migration
             $table->increments('quiz_id');
             $table->string('quiz_name')->nullable();
             $table->string('description')->nullable();
-            $table->string('quiz_date')->nullable();
+            // $table->string('quiz_date')->nullable();
             $table->string('quiz_time')->nullable();
             $table->string('number_of_question')->nullable();
             $table->string('status')->default(1);

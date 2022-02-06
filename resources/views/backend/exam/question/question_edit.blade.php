@@ -9,13 +9,13 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Tambah Data Quiz
+                    Ubah Data Pertanyaan
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.quiz.index') }}">Quiz</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Tambah Quiz</li>
+                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.question.index',$question->quiz_id) }}">Question</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Ubah Pertanyaan</li>
                     </ol>
                 </nav>
             </div>
@@ -30,32 +30,37 @@
             <div class="block block-rounded">
                 <div class="block-content block-content-full">
                     <!-- Regular -->
-                    <h2 class="content-heading border-bottom mb-4 pb-2">Informasi Quiz</h2>
-                    <form action="{{ route('admin.quiz.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    <h2 class="content-heading border-bottom mb-4 pb-2">Informasi Pertanyaan</h2>
+                    <form action="{{ route('admin.question.update',$question->question_id) }}" method="POST">
+                        @method('PUT')
+                        @csrf
                     <div class="row items-push">
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Nama Quiz <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="quiz_name" placeholder="Masukan Nama Quiz...">
-                            </div>
-                            <div class="form-group">
-                                <label>Jumlah Pertanyaan <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="number_of_question" placeholder="Masukan Jumlah Pertanyaan Quiz...">
+                                <label>Nama Pertanyaan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="question" value="{{$question->question}}" placeholder="Masukan Pertanyaan...">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             {{-- <div class="form-group">
-                                <label>Tanggal Quiz <span class="text-danger">*</span></label>
-                                <input type="text" class="js-flatpickr form-control bg-white" name="quiz_date" placeholder="d-m-Y" data-date-format="d-m-Y">
+                                <label>Nama Quiz</label>
+                                <input type="hidden" class="form-control" name="quiz_id" value="{{$question->quiz_id}}">
+                                <span class="form-control">{{$quiz->quiz_name}}</span>
                             </div> --}}
+                        </div>
+                        @foreach ($question->optionsdata as $key=>$option)
+                        <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Waktu Quiz <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Masukan Durasi Quiz Dalam Menit..." name="quiz_time" />
+                                <label>Jawaban Option {{++$key}} <span class="text-danger">*</span></label>
+                                <input type="hidden" name="option_id[]" value="{{$option->option_id}}">
+                                <input type="text" class="form-control" name="option[]" value="{{$option->option}}">
                             </div>
+                        </div>
+                        @endforeach
+                        <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Deskripsi</label>
-                                <textarea class="form-control" id="ckeditor" name="description" placeholder="Masukan Isi Deskripsi..."></textarea>
+                                <label>Jawaban Yang Benar <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="answer" value="{{$question->answer}}" placeholder="Masukan Jawaban Yang Benar...">
                             </div>
                         </div>
                     </div>
@@ -64,7 +69,7 @@
                     <div class="row items-push">
                         <div class="col-lg-8 offset-lg-5">
                             <button type="submit" data-toggle="click-ripple" class="btn btn-primary">
-                                <i class="fa fa-save mr-1"></i> Simpan
+                                <i class="fa fa-save mr-1"></i> Update
                             </button>
                         </div>
                     </div>
@@ -79,6 +84,13 @@
 @stop
 
 @push('scripts')
+
+<!-- Script Error SweetAlert2 -->
+@if (Session::has('error'))
+<script>
+    Swal.fire('Error', '{{ Session::get('error') }}' ,'error');
+</script>
+@endif
 
 <!-- iziToast Error Tampil -->
 @if ($errors->any)

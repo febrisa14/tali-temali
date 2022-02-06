@@ -22,7 +22,8 @@ class CreateResultsTable extends Migration
             $table->string('no_ans')->nullable();
             $table->longText('result_json')->nullable();
             $table->string('status')->nullable();
-            $table->string('date')->nullable();
+            $table->string('tgl_exp')->nullable();
+            $table->string('tgl_selesai')->nullable();
             $table->timestamps();
 
             $table->foreign('quiz_id')->references('quiz_id')->on('quizzes')->onDelete('cascade')->onUpdate('cascade');

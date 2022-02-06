@@ -9,7 +9,9 @@ class Results extends Model
 {
     use HasFactory;
 
-    protected $fillable=['user_id','quiz_id','total_mark','yes_ans','no_ans','date','status','result_json'];
+    protected $primaryKey = 'result_id';
+
+    protected $fillable=['user_id','quiz_id','tgl_exp','total_mark','yes_ans','no_ans','tgl_selesai','status','result_json'];
 
     public function user()
     {
@@ -19,4 +21,6 @@ class Results extends Model
     {
     	return $this->belongsTo(Quiz::class);
     }
+
+    protected $dates = ['tgl_exp'];
 }

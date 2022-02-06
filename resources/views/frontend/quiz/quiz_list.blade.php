@@ -11,11 +11,19 @@
         <!-- Dynamic Table Full Pagination -->
         <div class="block block-rounded">
             <div class="block-header border-bottom">
-                <h3 class="block-title">Quiz<small> yang tersedia</small></h3>
+                <h3 class="block-title">Quiz Anggota</h3>
             </div>
 
             <!-- All Orders -->
             <div class="block-content block-content-full">
+
+                <div class="alert alert-danger alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p class="mb-0">Pastikan sudah yakin ingin menjawab Quiz ketika menekan Tombol <b>Mulai Quiz</b> karena <b>Waktu</b> akan berjalan !</p>
+                </div>
+
                     <!-- All Orders Table -->
                     <div class="table-responsive">
                         <table width="100%" id="table-quiz" class="table js-dataTable-full-pagination table-hover table-borderless table-striped table-vcenter">
@@ -99,6 +107,20 @@
 
 @push('scripts')
 
+<!-- Script Success SweetAlert2 -->
+@if (Session::has('error'))
+<script>
+    Swal.fire('Error', '{{ Session::get('error') }}' ,'error');
+</script>
+@endif
+
+<!-- Script Success SweetAlert2 -->
+@if (Session::has('success'))
+<script>
+    Swal.fire('Success', '{{Session::get('success')}}' ,'success');
+</script>
+@endif
+
 <script>
 
 $(document).ready(function(){
@@ -112,6 +134,7 @@ $(document).ready(function(){
     $(function() {
         $('#table-quiz').DataTable({
             processing: true,
+            searching: false, paging: false, info: false,
             serverSide: true,
             autowidth: true,
             columnDefs: [
@@ -134,44 +157,68 @@ $(document).ready(function(){
         });
     });
 
-    // $(document).on('click', '.delete', function (){
+    // $(document).on('click', '.mulai', function (){
     //     var id = $(this).data("id");
     //     Swal.fire({
-    //         title: 'Hapus Data Quiz?',
-    //         text: 'Klik "Iya" untuk menghapus data',
+    //         title: 'Ingin Mulai Quiz',
+    //         text: 'Klik "Iya" untuk melanjutkan',
     //         icon: 'warning',
     //         showCancelButton: true,
     //         confirmButtonColor: '#d33',
     //         cancelButtonColor: '#3085d6',
     //         confirmButtonText: 'Iya',
-    //         cancelButtonText: 'Tidak'
+    //         cancelButtonText: 'Tidak',
+    //         closeOnConfirm: false,
+    //         closeOnCancel: false },
     //     }).then((result) => {
-    //         if(result.isConfirmed){
-    //             $.ajax({
-    //                 type: "delete",
-    //                 dataType: 'json',
-    //                 url: "{{ route('admin.quiz.destroy','') }}/"+id,
-    //                 success: function (data) {
-    //                     if (data.success == true)
-    //                     {
-    //                         Swal.fire('Deleted', data.message ,'success');
-    //                     }
-    //                     else if (data.success == false)
-    //                     {
-    //                         Swal.fire('Gagal', data.message ,'error');
-    //                     }
-    //                     var table = $('#table-quiz').DataTable();
-    //                     table.draw();
-    //                     // location.reload();
-    //                     }
-    //             });
+    //         if (result.isConfirmed) {
+    //             window.location.href = 'quiz-start/'+id;
+    //         } else if (result.isDenied) {
+    //         Swal.fire('Changes are not saved', '', 'info')
     //         }
-    //         // else {
-    //         //     Swal.fire('Batal','Batal Menghapus Data Pengurus','error')
-    //         // }
-    //     });
+    //     })
     // });
 
+    $(document).on('click', '.mulai', function (){
+        var id = $(this).data("id");
+        Swal.fire({
+            title: 'Ingin Mulai Quiz',
+            text: 'Klik "Iya" untuk melanjutkan',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Iya',
+            cancelButtonText: 'Tidak',
+            // closeOnConfirm: false,
+            // closeOnCancel: false },
+        }).then((result) => {
+            if(result.isConfirmed){
+                $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "{{ route('anggota.quiz.start','') }}/"+id,
+                    success: function (data) {
+                        // if (data.success == true)
+                        // {
+                        //     Swal.fire('Success', data.message ,'success');
+                        // }
+                        // else if (data.success == false)
+                        // {
+                        //     Swal.fire('Gagal', data.message ,'error');
+                        // }
+                        // var table = $('#table-pengurus').DataTable();
+                        // table.draw();
+                        // location.reload();
+                        window.location.href = 'quiz-start/'+id;
+                        }
+                });
+            }
+            // else {
+            //     Swal.fire('Batal','Batal Menghapus Data Pengurus','error')
+            // }
+        });
+    });
 });
 
 </script>

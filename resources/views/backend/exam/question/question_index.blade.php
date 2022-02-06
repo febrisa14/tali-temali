@@ -32,7 +32,7 @@
             <div class="block-header border-bottom">
                 <h3 class="block-title"><small>List Data</small> Pertanyaan <small>dari</small> Quiz {{$quiz->quiz_name}}</h3>
                     <a data-id="{{route('admin.question.index',['id' => $quiz->quiz_id])}}"></a>
-                    @if ($jumlahQuestion <= $numberQuestion)
+                    @if ($jumlahQuestion < $quiz->number_of_question)
                         <a href="{{ route('admin.question.create',['id' => $quiz->quiz_id]) }}" class="btn btn-sm btn-alt-primary px-2 py-2">
                             <i class="fa fa-plus mr-1"></i> Tambah Pertanyaan
                         </a>
@@ -49,7 +49,7 @@
                 </div>
                     <!-- All Orders Table -->
                     <div class="table-responsive">
-                        <table width="100%" id="table-question" class="table js-dataTable-full-pagination table-hover table-borderless table-striped table-vcenter">
+                        <table width="100%" id="table-question" class="table js-dataTable-full-pagination table-hover table-borderless table-vcenter">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -207,7 +207,7 @@ $(document).ready(function(){
                         }
                         var table = $('#table-question').DataTable();
                         table.draw();
-                        // location.reload();
+                        location.reload();
                         }
                 });
             }

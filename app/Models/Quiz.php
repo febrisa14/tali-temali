@@ -14,6 +14,6 @@ class Quiz extends Model
     protected $primaryKey = 'quiz_id';
 
     protected $fillable = [
-        'quiz_name','description','quiz_date','quiz_time','number_of_question','status',
+        'quiz_name','description','quiz_time','number_of_question','status',
     ];
 }

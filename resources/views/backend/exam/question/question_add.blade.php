@@ -49,22 +49,22 @@
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Jawaban Option A <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option A...">
+                                <label>Jawaban Option 1 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option 1...">
                             </div>
                             <div class="form-group">
-                                <label>Jawaban Option B <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option B...">
+                                <label>Jawaban Option 2 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option 2...">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label>Jawaban Option C <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option C...">
+                                <label>Jawaban Option 3 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option 3...">
                             </div>
                             <div class="form-group">
-                                <label>Jawaban Option D <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option D...">
+                                <label>Jawaban Option 4 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="option[]" placeholder="Masukan Jawaban Option 4...">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">

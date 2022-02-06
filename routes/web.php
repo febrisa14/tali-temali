@@ -58,10 +58,11 @@ Route::middleware(['auth'])->group(function () {
 
         //Route Quiz
         Route::resource('quiz', QuizController::class);
+        Route::get('quiz/hasil/{id}',[QuizController::class, 'hasilQuiz'])->name('quiz.hasil');
 
         //Route Question
-        Route::resource('quiz/{id}/question', QuestionController::class)->except(['destroy','update','store']);
-        Route::resource('question', QuestionController::class)->only(['destroy','update','store']);
+        Route::resource('quiz/{id}/question', QuestionController::class)->except(['edit','destroy','update','store']);
+        Route::resource('question', QuestionController::class)->only(['edit','destroy','update','store']);
 
         Route::post('editor/image_upload', [MateriController::class, 'upload'])->name('upload');
         Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
@@ -77,8 +78,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/change_profile', [AnggotaProfileController::class, 'updateProfile'])->name('change_profile');
 
         Route::get('quiz', [QuizzesController::class, 'index'])->name('quiz.index');
+        Route::post('quiz-start/{id}',[QuizzesController::class, 'startQuiz'])->name('quiz.start');
         Route::get('quiz-start/{id}',[QuizzesController::class, 'mulaiQuiz'])->name('quiz.mulai');
         Route::post('quiz',[QuizzesController::class, 'submitQuiz'])->name('quiz.submit');
+        Route::get('quiz/hasil/{id}',[QuizzesController::class, 'hasilQuiz'])->name('quiz.hasil');
     });
 
 });

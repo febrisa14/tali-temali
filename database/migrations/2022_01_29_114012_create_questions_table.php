@@ -18,9 +18,9 @@ class CreateQuestionsTable extends Migration
             $table->integer('quiz_id')->unsigned();
             $table->string('question')->nullable();
             $table->string('answer')->nullable();
-            $table->string('status')->nullable();
-            $table->string('options')->nullable();
-            $table->string('user_id')->nullable();
+            // $table->string('status')->nullable();
+            // $table->string('options')->nullable();
+            // $table->string('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('quiz_id')->references('quiz_id')->on('quizzes')->onDelete('cascade')->onUpdate('cascade');

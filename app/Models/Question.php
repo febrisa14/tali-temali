@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Options;
+use App\Models\Quiz;
 
 class Question extends Model
 {
@@ -14,12 +16,12 @@ class Question extends Model
     protected $primaryKey = 'question_id';
 
     protected $fillable = [
-        'quiz_id','question','answer','status','options','user_id',
+        'question_id','quiz_id','question','answer','status','options','user_id',
     ];
 
     public function optionsdata()
     {
-    	return $this->hasMany(Options::class)->inRandomOrder();
+    	return $this->hasMany(Options::class,'question_id')->inRandomOrder();
     }
      public function quiz()
     {
