@@ -142,7 +142,17 @@
     iziToast.success({
         title: 'Success',
         message: '{{$message}}',
-        position: 'topCenter'
+        position: 'bottomCenter'
+    });
+</script>
+@endif
+
+@if ($message = Session::get('error'))
+<script>
+    iziToast.warning({
+        title: 'Gagal',
+        message: '{{$message}}',
+        position: 'bottomCenter'
     });
 </script>
 @endif

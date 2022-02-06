@@ -21,6 +21,8 @@ class Anggota
         {
             return $next($request);
         }
+
+        session()->flash('error', 'Halaman ini hanya bisa diakses oleh Anggota !');
         return back();
     }
 }

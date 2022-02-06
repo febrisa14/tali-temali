@@ -21,6 +21,7 @@ class Admin
         {
             return $next($request);
         }
+        session()->flash('error', 'Halaman ini hanya bisa diakses oleh Pengurus !');
         return back();
     }
 }
