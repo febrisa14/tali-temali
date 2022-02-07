@@ -14,6 +14,11 @@ use App\Models\Question;
 
 class QuizzesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('avoid-back')->except('index','startQuiz','hasilQuiz');
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
