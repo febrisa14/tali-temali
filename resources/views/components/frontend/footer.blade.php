@@ -9,7 +9,7 @@
         <div class="row footer-l-13-items">
           <div class="col-md-3">
             <div class="footer-logo-l-13">
-              <a href="#"><img src="{{ url('assets/image/mapala-dark.png') }}" height="26" alt="logo"></a>
+              <a href="#" style="cursor: text;"><img src="{{ url('assets/image/mapala-dark.png') }}" height="26" alt="logo"></a>
             </div>
           </div>
           <div class="col-md-5">
