@@ -32,7 +32,7 @@ class QuizzesController extends Controller
                 ->addColumn('action', function($data){
                     if ($res = Results::where('user_id', Auth::user()->user_id)->where('quiz_id', $data->quiz_id)->where('status','Selesai')->first())
                     {
-                        $actionBtn = ' <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Hasil Quiz"> Hasil : '. $res->total_mark .'</a>';
+                        $actionBtn = ' <a href="#" style="cursor: text;" class="btn btn-sm btn-success" data-toggle="tooltip" title="Hasil Quiz"> Hasil : '. $res->total_mark .'</a>';
                         $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->quiz_id . '" class="mulai btn btn-sm btn-primary" data-toggle="tooltip" title="Mulai Quiz"><i class="fa fa-chevron-right mr-1"></i> Mulai Ulang Quiz</a>';
                         return $actionBtn;
                     }
@@ -108,7 +108,7 @@ class QuizzesController extends Controller
 
             if ($check)
             {
-                return redirect()->back()->with('error', 'Kamu hanya dapat mengikuti Quiz selama 1 kali.');
+                return redirect()->back()->with('error', 'Silahkan klik tombol Mulai Ulang Quiz.');
             }
 
             else

@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('quiz-start/{id}',[QuizzesController::class, 'startQuiz'])->name('quiz.start');
         Route::get('quiz-start/{id}',[QuizzesController::class, 'mulaiQuiz'])->name('quiz.mulai');
         Route::post('quiz',[QuizzesController::class, 'submitQuiz'])->name('quiz.submit');
-        Route::get('quiz/hasil/{id}',[QuizzesController::class, 'hasilQuiz'])->name('quiz.hasil');
+        // Route::get('quiz/hasil/{id}',[QuizzesController::class, 'hasilQuiz'])->name('quiz.hasil');
     });
 
 });
