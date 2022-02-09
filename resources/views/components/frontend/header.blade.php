@@ -27,14 +27,23 @@
               </ul>
               @else
               <ul class="site-menu-main">
+
                 <li class="nav-item">
                   <a href="{{ route('home') }}" class="nav-link-item">Beranda</a>
                 </li>
+
                 @if(Request::is('kurikulum/*'))
                 <li class="nav-item">
                     <a href="{{ route('kurikulum') }}" class="nav-link-item">Kurikulum</a>
                 </li>
                 @endIf
+
+                @if(Request::is('materi_simpul') || Request::is('materi_jerat'))
+                <li class="nav-item">
+                    <a href="{{ route('rockclimbing') }}" class="nav-link-item">Jenis Jerat</a>
+                </li>
+                @endIf
+
                 @if(Request::is('/'))
                 <li class="nav-item">
                     <a href="#mapala-kompas" class="nav-link-item">Mapala Kompas</a>

@@ -32,7 +32,8 @@ class QuizzesController extends Controller
                 ->addColumn('action', function($data){
                     if ($res = Results::where('user_id', Auth::user()->user_id)->where('quiz_id', $data->quiz_id)->where('status','Selesai')->first())
                     {
-                        $actionBtn = ' <a href="/anggota/quiz/hasil/'. $data->quiz_id .'" class="pilih btn btn-sm btn-success" data-toggle="tooltip" title="Lihat Hasil Quiz"><i class="fa fa-chevron-right mr-1"></i> Lihat Hasil</a>';
+                        $actionBtn = ' <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Hasil Quiz"> Hasil : '. $res->total_mark .'</a>';
+                        $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->quiz_id . '" class="mulai btn btn-sm btn-primary" data-toggle="tooltip" title="Mulai Quiz"><i class="fa fa-chevron-right mr-1"></i> Mulai Ulang Quiz</a>';
                         return $actionBtn;
                     }
                     else if ($res = Results::where('user_id', Auth::user()->user_id)->where('quiz_id', $data->quiz_id)->first())
@@ -59,12 +60,22 @@ class QuizzesController extends Controller
     {
         $quiz = Quiz::where('quiz_id',$id)->first();
         // $question = Question::where('quiz_id',$id)->get()->first();
+        // $exams = new Exams;
         $userId = Auth::user()->user_id;
         $current = Carbon::now();
 
         if ($result = Results::where('quiz_id', $id)->where('user_id',$userId)->first())
         {
+            $result->delete();
 
+            Exams::where('quiz_id', $id)->where('user_id',$userId)->delete();
+
+            Results::create([
+                'quiz_id' => $quiz->quiz_id,
+                // 'question_id' => $question->question_id,
+                'user_id' => $userId,
+                'tgl_exp' => $current->addMinute($quiz->quiz_time),
+            ]);
         }
 
         else

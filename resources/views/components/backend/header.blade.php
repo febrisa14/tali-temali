@@ -18,10 +18,7 @@
             </button>
             <!-- END Toggle Mini Sidebar -->
 
-        </div>
-        <!-- END Left Section -->
-
-        <?php
+            <?php
             $nama = Auth::User()->name;
             // $email = Auth::User()->email;
             $avatar = Auth::User()->avatar;
@@ -29,7 +26,25 @@
             // $split = explode(" ", $nama);
             // $lastname = array_pop($split);
             // $firstname = implode(" ", $split);
-        ?>
+            ?>
+
+            @if ($role == "Pengurus")
+
+            <div id="main-navigation" class="d-none d-lg-block mt-2 mt-lg-0">
+                <ul class="nav-main nav-main-horizontal nav-main-hover">
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('home') }}">
+                            <i class="nav-main-link-icon si si-home"></i>
+                            <span class="nav-main-link-name">Beranda</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            @endIf
+
+        </div>
+        <!-- END Left Section -->
 
         <!-- Right Section -->
         <div class="d-flex align-items-center">
