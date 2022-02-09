@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2022 at 01:43 AM
+-- Generation Time: Feb 09, 2022 at 01:55 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -63,6 +63,22 @@ CREATE TABLE `exams` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`exam_id`, `user_id`, `quiz_id`, `question_id`, `ans`, `is_ans`, `created_at`, `updated_at`) VALUES
+(45, 1, 2, 14, 'kedelapan', 'yes', '2022-02-07 03:26:34', '2022-02-07 03:26:34'),
+(46, 1, 2, 15, 'balian', 'yes', '2022-02-07 03:26:34', '2022-02-07 03:26:34'),
+(47, 1, 2, 11, 'anjing', 'no', '2022-02-07 03:26:34', '2022-02-07 03:26:34'),
+(48, 1, 2, 6, 'kuluk', 'yes', '2022-02-07 03:26:34', '2022-02-07 03:26:34'),
+(49, 1, 2, 5, 'gajah', 'yes', '2022-02-07 03:26:34', '2022-02-07 03:26:34'),
+(55, 4, 2, 15, 'klinik', 'no', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
+(56, 4, 2, 6, 'kuluk', 'yes', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
+(57, 4, 2, 5, 'gajah', 'yes', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
+(58, 4, 2, 11, 'anjing', 'no', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
+(59, 4, 2, 14, 'pertama', 'no', '2022-02-09 00:42:01', '2022-02-09 00:42:01');
 
 -- --------------------------------------------------------
 
@@ -146,10 +162,10 @@ INSERT INTO `options` (`option_id`, `question_id`, `option`, `created_at`, `upda
 (12, 5, 'anjing', NULL, NULL),
 (13, 5, 'kerbau', NULL, NULL),
 (14, 5, 'kucing', NULL, '2022-02-05 12:41:09'),
-(15, 6, 'benar', NULL, NULL),
-(16, 6, 'salah', NULL, NULL),
-(17, 6, 'anjing', NULL, NULL),
-(18, 6, 'kucing', NULL, NULL),
+(15, 6, 'peking', NULL, '2022-02-06 00:52:07'),
+(16, 6, 'becing - becing', NULL, '2022-02-06 00:52:07'),
+(17, 6, 'kuluk', NULL, '2022-02-06 00:52:07'),
+(18, 6, 'memedi', NULL, '2022-02-06 00:52:07'),
 (35, 11, 'kuluk', NULL, NULL),
 (36, 11, 'sampi', NULL, NULL),
 (37, 11, 'kebo', NULL, NULL),
@@ -184,7 +200,7 @@ CREATE TABLE `questions` (
 
 INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
 (5, 2, 'Salah satu jenis binatang rumahan, kecuali', 'gajah', '2022-01-29 12:29:30', '2022-02-05 12:41:09'),
-(6, 2, 'pertanyaan 2', 'benar', '2022-01-29 13:25:21', '2022-01-29 13:25:21'),
+(6, 2, 'anaknya anjing disebut', 'kuluk', '2022-01-29 13:25:21', '2022-02-06 00:52:07'),
 (11, 2, 'pertanyaan 3', 'kuluk', '2022-02-05 13:03:59', '2022-02-05 13:03:59'),
 (14, 2, 'naruto termasuk hokage ke berapa?', 'kedelapan', '2022-02-05 13:08:05', '2022-02-05 13:08:05'),
 (15, 2, 'orang berobat harusnya ke?', 'balian', '2022-02-05 13:08:30', '2022-02-05 13:08:30');
@@ -232,6 +248,14 @@ CREATE TABLE `results` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`result_id`, `user_id`, `quiz_id`, `total_mark`, `yes_ans`, `no_ans`, `result_json`, `status`, `tgl_exp`, `tgl_selesai`, `created_at`, `updated_at`) VALUES
+(10, 1, 2, '80', '4', '1', '{\"14\":\"yes\",\"15\":\"yes\",\"11\":\"no\",\"6\":\"yes\",\"5\":\"yes\"}', 'Selesai', '2022-02-07 11:31:11', '2022-02-07 11:26:34', '2022-02-07 03:26:11', '2022-02-07 03:26:34'),
+(16, 4, 2, '40', '2', '3', '{\"15\":\"no\",\"6\":\"yes\",\"5\":\"yes\",\"11\":\"no\",\"14\":\"no\"}', 'Selesai', '2022-02-09 08:46:25', '2022-02-09 08:42:01', '2022-02-09 00:41:25', '2022-02-09 00:42:01');
 
 -- --------------------------------------------------------
 
@@ -335,7 +359,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `materi`
@@ -371,7 +395,7 @@ ALTER TABLE `quizzes`
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
