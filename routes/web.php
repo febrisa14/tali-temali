@@ -77,11 +77,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/profile', [AnggotaProfileController::class, 'index'])->name('profile');
         Route::post('/change_profile', [AnggotaProfileController::class, 'updateProfile'])->name('change_profile');
 
-        Route::get('quiz', [QuizzesController::class, 'index'])->name('quiz.index');
-        Route::post('quiz-start/{id}',[QuizzesController::class, 'startQuiz'])->name('quiz.start');
-        Route::get('quiz-start/{id}',[QuizzesController::class, 'mulaiQuiz'])->name('quiz.mulai');
-        Route::post('quiz',[QuizzesController::class, 'submitQuiz'])->name('quiz.submit');
-        // Route::get('quiz/hasil/{id}',[QuizzesController::class, 'hasilQuiz'])->name('quiz.hasil');
+        Route::middleware(['details'])->group(function () {
+            Route::get('quiz', [QuizzesController::class, 'index'])->name('quiz.index');
+            Route::post('quiz-start/{id}',[QuizzesController::class, 'startQuiz'])->name('quiz.start');
+            Route::get('quiz-start/{id}',[QuizzesController::class, 'mulaiQuiz'])->name('quiz.mulai');
+            Route::post('quiz',[QuizzesController::class, 'submitQuiz'])->name('quiz.submit');
+            // Route::get('quiz/hasil/{id}',[QuizzesController::class, 'hasilQuiz'])->name('quiz.hasil');
+        });
     });
 
 });

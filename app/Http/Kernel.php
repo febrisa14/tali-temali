@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'anggota' => \App\Http\Middleware\Anggota::class,
         'avoid-back' => \App\Http\Middleware\AvoidBackHistory::class,
+        'details' => \App\Http\Middleware\Details::class,
     ];
 }
