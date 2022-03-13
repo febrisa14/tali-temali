@@ -10,12 +10,12 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Data Anggota
+                    Data Pengguna
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Anggota</li>
+                        <li class="breadcrumb-item" aria-current="page">Pengguna</li>
                     </ol>
                 </nav>
             </div>
@@ -29,9 +29,9 @@
         <!-- Dynamic Table Full Pagination -->
         <div class="block block-rounded">
             <div class="block-header border-bottom">
-                <h3 class="block-title"><small>List Data</small> Anggota</h3>
-                    <a href="{{ route('admin.anggota.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
-                        <i class="fa fa-plus mr-1"></i> Tambah Anggota
+                <h3 class="block-title"><small>List Data</small> Pengguna</h3>
+                    <a href="{{ route('admin.pengguna.create') }}" class="btn btn-sm btn-alt-primary px-2 py-2">
+                        <i class="fa fa-plus mr-1"></i> Tambah Pengguna
                     </a>
             </div>
 
@@ -44,6 +44,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>No. CA</th>
+                                <th>Level User</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -86,14 +87,16 @@ $(document).ready(function(){
                 {targets: 1, className: "text-center"},
                 {targets: 2, className: "text-center"},
                 {targets: 3, className: "text-center"},
+                {targets: 4, className: "text-center"},
             ],
             ajax: {
-                url: '{{ route('admin.anggota.index') }}',
+                url: '{{ route('admin.pengguna.index') }}',
             },
             columns: [
                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                   {data: 'name', name: 'name'},
                   {data: 'no_ca', name: 'no_ca', orderable: false},
+                  {data: 'role', name: 'role', orderable: false},
                   {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -102,7 +105,7 @@ $(document).ready(function(){
     $(document).on('click', '.delete', function (){
         var id = $(this).data("id");
         Swal.fire({
-            title: 'Hapus Data Anggota?',
+            title: 'Hapus Data Pengguna?',
             text: 'Klik "Iya" untuk menghapus data',
             icon: 'warning',
             showCancelButton: true,
@@ -115,7 +118,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "delete",
                     dataType: 'json',
-                    url: "{{ route('admin.anggota.destroy','') }}/"+id,
+                    url: "{{ route('admin.pengguna.destroy','') }}/"+id,
                     success: function (data) {
                         if (data.success == true)
                         {

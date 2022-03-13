@@ -11,7 +11,7 @@ use Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class AnggotaController extends Controller
+class PenggunaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,14 @@ class AnggotaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('user_id', 'name', 'no_ca')
+            $data = User::select('user_id', 'name', 'no_ca', 'role')
                     ->orderBy('created_at', 'DESC')
-                    ->where('role','=','Anggota')->get();
+                    ->where('user_id','<>',Auth::User()->user_id)->get();
 
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                $actionBtn = ' <a href="/admin/anggota/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
+                $actionBtn = ' <a href="/admin/pengguna/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
                 $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
                 return $actionBtn;
                 })
@@ -36,8 +36,8 @@ class AnggotaController extends Controller
                 ->make(true);
         }
 
-        return view('backend/anggota/anggota_index', [
-            'title' => 'List Anggota | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
+        return view('backend/pengguna/pengguna_index', [
+            'title' => 'List Pengguna | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
         ]);
     }
 
@@ -48,8 +48,8 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('backend/anggota/anggota_add', [
-            'title' => 'Tambah Data Anggota | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
+        return view('backend/pengguna/pengguna_add', [
+            'title' => 'Tambah Data Pengguna | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali'
         ]);
     }
 
@@ -64,6 +64,7 @@ class AnggotaController extends Controller
         $request->validate([
             'email' => 'required|email|unique:users',
             'name' => 'required',
+            'role' => 'required',
             'no_telp' => 'required|numeric',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
@@ -76,8 +77,8 @@ class AnggotaController extends Controller
             'password' => Hash::make('12345678'),
             'name' => $request->name,
             'no_ca' => $request->no_ca,
+            'role' => $request->role,
             'no_telp' => $request->no_telp,
-            'role' => 'Anggota'
         ]);
 
         $usersId = $users->user_id;
@@ -90,7 +91,7 @@ class AnggotaController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Menambahkan Anggota.');
+        return redirect()->route('admin.pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna.');
     }
 
     /**
@@ -116,6 +117,7 @@ class AnggotaController extends Controller
                 'users.user_id',
                 'users.email',
                 'users.name',
+                'users.role',
                 'users.no_ca',
                 'users.no_telp',
                 'detail_akun.alamat',
@@ -125,8 +127,8 @@ class AnggotaController extends Controller
             ->rightJoin('detail_akun', 'detail_akun.detail_user_id', '=', 'users.user_id')
             ->where('users.user_id',$id)->first();
 
-        return view('backend/anggota/anggota_edit', [
-            'title' => 'Ubah Data Anggota | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
+        return view('backend/pengguna/pengguna_edit', [
+            'title' => 'Ubah Data Pengguna | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
             'user'=> $user
         ]);
     }
@@ -144,6 +146,7 @@ class AnggotaController extends Controller
             'email' => 'required|email|unique:users,email,'.$id.',user_id',
             'no_telp' => 'required',
             'alamat' => 'required',
+            'role' => 'required',
             'name' => 'required',
             'tgl_lahir' => 'required',
             'no_ca' => 'required',
@@ -155,6 +158,7 @@ class AnggotaController extends Controller
             'users.user_id',
             'users.email',
             'users.name',
+            'users.role',
             'users.no_ca',
             'users.no_telp',
             'detail_akun.alamat',
@@ -167,6 +171,7 @@ class AnggotaController extends Controller
         //setelah dapetin datanya cek satu2 inputannya apakah ada yg berubah?
         $user->email = $request->email;
         $user->name = $request->name;
+        $user->role = $request->role;
         $user->no_telp = $request->no_telp;
         $user->tgl_lahir = $request->tgl_lahir;
         $user->no_ca = $request->no_ca;
@@ -179,6 +184,7 @@ class AnggotaController extends Controller
             User::where('user_id',$id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
+                'role' => $request->role,
                 'no_ca' => $request->no_ca,
                 'no_telp' => $request->no_telp,
                 'updated_at' => now()
@@ -192,7 +198,7 @@ class AnggotaController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect()->route('admin.anggota.index')->with('success', 'Berhasil Update Data Anggota.');
+            return redirect()->route('admin.pengguna.index')->with('success', 'Berhasil Update Data Pengguna.');
         }
 
         return back()->with('error', 'Kamu belum merubah data apapun !');

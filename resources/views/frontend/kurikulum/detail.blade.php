@@ -21,6 +21,7 @@
         <div class="col-xxl-7 col-xl-8 col-lg-9 col-md-12">
           <h4>Pengertian :</h4>
           <p>{{$pengertian}}</p>
+          <img src="{{$gambar}}" alt="" class="w-100">
           <h4>Download Materi</h4>
           <p>Jika ingin membaca materi lebih lanjut, anda dapat mendownload melalui button dibawah ini.</p>
           <div class="cd-apply-btn">

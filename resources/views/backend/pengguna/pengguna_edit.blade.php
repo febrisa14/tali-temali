@@ -9,13 +9,13 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                    Ubah Data Anggota
+                    Ubah Data Pengguna
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.anggota.index') }}">Anggota</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Ubah Anggota</li>
+                        <li class="breadcrumb-item"><a class="link-fx" href="{{ route('admin.pengguna.index') }}">Anggota</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Ubah Pengguna</li>
                     </ol>
                 </nav>
             </div>
@@ -31,7 +31,7 @@
                 <div class="block-content block-content-full">
                     <!-- Regular -->
                     <h2 class="content-heading border-bottom mb-4 pb-2">Informasi Akun</h2>
-                    <form action="{{ route('admin.anggota.update',$user->user_id) }}" method="POST">
+                    <form action="{{ route('admin.pengguna.update',$user->user_id) }}" method="POST">
                         @method('PUT')
                         @csrf
                     <div class="row items-push">
@@ -68,6 +68,13 @@
                                 <select class="custom-select" id="jenis_kelamin" name="jenis_kelamin">
                                     <option {{ $user->jenis_kelamin == "Laki - Laki" ? 'selected' : ''}} value="Laki - Laki">Laki - Laki</option>
                                     <option {{ $user->jenis_kelamin == "Perempuan" ? 'selected' : ''}} value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jenis_kelamin">Level User <span class="text-danger">*</span></label>
+                                <select class="custom-select" id="role" name="role">
+                                    <option {{ $user->role == "Pengurus" ? 'selected' : ''}} value="Pengurus">Pengurus</option>
+                                    <option {{ $user->role == "Anggota" ? 'selected' : ''}} value="Anggota">Anggota</option>
                                 </select>
                             </div>
                             {{-- <div class="form-group">

@@ -40,7 +40,7 @@
 
                 @if(Request::is('materi_simpul') || Request::is('materi_jerat'))
                 <li class="nav-item">
-                    <a href="{{ route('rockclimbing') }}" class="nav-link-item">Jenis Jerat</a>
+                    <a href="{{ route('rockclimbing') }}" class="nav-link-item">Jenis Tali</a>
                 </li>
                 @endIf
 

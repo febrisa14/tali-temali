@@ -10,7 +10,7 @@ use App\Http\Controllers\Frontend\QuizzesController;
 
 //Backend Route
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\AnggotaController;
+use App\Http\Controllers\Backend\PenggunaController;
 use App\Http\Controllers\Backend\MateriController;
 use App\Http\Controllers\Backend\KategoriController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('anggota', AnggotaController::class);
+        Route::resource('pengguna', PenggunaController::class);
         Route::resource('materi', MateriController::class);
 
         //Route Quiz

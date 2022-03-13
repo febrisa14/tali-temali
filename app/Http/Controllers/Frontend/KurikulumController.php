@@ -17,6 +17,7 @@ class KurikulumController extends Controller
     public function mountenering()
     {
         return view('frontend/kurikulum/detail', [
+            'gambar' => 'https://i.ibb.co/wRmyDqL/Mounteneering.jpg',
             'title' => 'Mountenering | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
             'judul' => 'Mountenering',
             'pengertian' => 'Mountaineering adalah salah satu dari kegiatan di alam bebas yang biasa dilakukan di
@@ -29,6 +30,7 @@ class KurikulumController extends Controller
     public function navigasidarat()
     {
         return view('frontend/kurikulum/detail', [
+            'gambar' => 'https://i.ibb.co/KDkMyfD/Navigasi-Darat.jpg',
             'title' => 'Navigasi Darat | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
             'judul' => 'Navigasi Darat',
             'pengertian' => 'Navigasi adalah suatu teknik menentukan kedudukan dan arah perjalanan secara
@@ -42,6 +44,7 @@ class KurikulumController extends Controller
     public function rockclimbing()
     {
         return view('frontend/kurikulum/detail', [
+            'gambar' => 'https://i.ibb.co/RH6bHcS/Rock-Climbbing.jpg',
             'title' => 'Rock Climbing | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
             'judul' => 'Rock Climbing',
             'pengertian' => 'ROCK = Batu
@@ -70,6 +73,7 @@ class KurikulumController extends Controller
     public function survival()
     {
         return view('frontend/kurikulum/detail', [
+            'gambar' => 'https://i.ibb.co/yqsYJgW/Survival.jpg',
             'title' => 'Survival | SI Pembelajaran Tali Temali - UKM Mapala Kompas Stikom Bali',
             'judul' => 'Survival',
             'pengertian' => 'Survival adalah berusaha mempertahankan hidup di alam bebas. Survival
