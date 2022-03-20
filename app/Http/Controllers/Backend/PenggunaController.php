@@ -23,8 +23,8 @@ class PenggunaController extends Controller
         if ($request->ajax()) {
             $data = User::select('user_id', 'name', 'no_ca', 'role')
                     ->orderBy('created_at', 'DESC')
-                    ->where('user_id','<>',Auth::User()->user_id)->get();
-
+                    ->where('user_id','<>',Auth::User()->user_id)
+                    ->get();
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){

@@ -10,6 +10,11 @@ use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('avoid-back')->only('create');
+    }
+
     public function create()
     {
         return view('auth.login', [

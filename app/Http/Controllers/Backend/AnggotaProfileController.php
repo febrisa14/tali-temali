@@ -45,11 +45,11 @@ class AnggotaProfileController extends Controller
         $emailUpdate->email = $request->email; // cek inputan email apakah sama
 
         $user = User::where('user_id', Auth::user()->user_id)
-        ->select('name','no_telp', 'no_ca')->first();
+        ->select('name','no_telp')->first();
 
         $user->name = $request->name;
         $user->no_telp = $request->no_telp;
-        $user->no_ca = $request->no_ca;
+        // $user->no_ca = $request->no_ca;
 
         $anggota = Detail::where('detail_user_id', Auth::user()->user_id)
         ->select('tgl_lahir','alamat','jenis_kelamin')->first();
@@ -71,7 +71,7 @@ class AnggotaProfileController extends Controller
             User::where('user_id', Auth::user()->user_id)
             ->update([
                 'name' => $request->name,
-                'no_ca' => $request->no_ca,
+                // 'no_ca' => $request->no_ca,
                 'no_telp' => $request->no_telp,
                 'updated_at' => now()
             ]);

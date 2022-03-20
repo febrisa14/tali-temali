@@ -36,7 +36,8 @@
                             </div>
                             <div class="form-group">
                                 <label>No. CA</label>
-                                <input type="text" class="form-control" id="no_ca" name="no_ca" value="{{ $users->no_ca }}">
+                                {{-- <input type="text" class="form-control" id="no_ca" name="no_ca" value="{{ $users->no_ca }}"> --}}
+                                <span class="form-control">{{ $users->no_ca }}</span>
                             </div>
                             <div class="form-group">
                                 <label for="no_telp">No. Telp</label>
