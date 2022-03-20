@@ -216,7 +216,7 @@ class PenggunaController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil Menghapus Anggota'
+            'message' => 'Berhasil Menghapus Pengguna'
         ]);
     }
 }
