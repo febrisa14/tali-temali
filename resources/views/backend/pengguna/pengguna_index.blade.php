@@ -43,7 +43,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>No. CA</th>
+                                <th>No. Pengguna</th>
                                 <th>Level User</th>
                                 <th></th>
                             </tr>

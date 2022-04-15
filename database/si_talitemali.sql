@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 02:39 AM
+-- Generation Time: Apr 16, 2022 at 12:08 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -42,16 +42,23 @@ CREATE TABLE `detail_akun` (
 --
 
 INSERT INTO `detail_akun` (`detail_user_id`, `tgl_lahir`, `jenis_kelamin`, `umur`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, '12-07-1999', 'Laki - Laki', '23', 'Jalan Tukad Balian wirasatya VII 9', '2021-11-23 07:13:30', '2022-03-07 04:04:28'),
-(2, '15-01-1999', 'Laki - Laki', '23', 'Jalan Raya Sesetan', '2022-01-22 01:12:26', '2022-03-13 07:15:52'),
+(1, '12-07-1999', 'Laki - Laki', '23', 'Jalan Tukad Balian wirasatya VII 9', '2021-11-23 07:13:30', '2022-04-12 09:30:27'),
+(2, '15-01-1999', 'Laki - Laki', '22', 'Jalan Raya Sesetan', '2022-01-22 01:12:26', '2022-01-24 04:06:39'),
 (4, '19-11-1997', 'Laki - Laki', '25', 'Jalan Sading', '2022-01-24 04:03:27', '2022-01-24 04:03:39'),
 (6, '11-08-1999', 'Laki - Laki', '23', 'Jalan Raya Sesetan', '2022-01-24 04:20:49', '2022-01-24 04:22:57'),
-(8, NULL, NULL, NULL, NULL, '2022-02-15 03:15:54', '2022-02-15 03:15:54'),
-(9, '26-08-1998', 'Laki - Laki', '24', 'Jalan Cekomaria', '2022-03-07 03:53:37', '2022-03-19 01:54:24'),
+(8, '11-04-2022', 'Laki - Laki', '0', 'jln', '2022-02-15 03:15:54', '2022-04-14 02:16:40'),
+(9, NULL, NULL, NULL, NULL, '2022-03-07 03:53:37', '2022-03-07 03:53:37'),
+(10, NULL, NULL, NULL, NULL, '2022-03-07 03:58:53', '2022-03-07 03:58:53'),
 (11, '01-03-2022', 'Laki - Laki', '0', 'jl. jgjhgjhgjgjhgj', '2022-03-07 11:34:34', '2022-03-07 11:40:27'),
 (12, NULL, NULL, NULL, NULL, '2022-03-07 14:06:03', '2022-03-07 14:06:03'),
-(13, '12-08-2003', 'Laki - Laki', '19', 'jalaanann', '2022-03-07 14:06:53', '2022-03-13 07:15:40'),
-(14, '17-03-1999', 'Laki - Laki', '23', 'Jalaannn', '2022-03-13 07:05:35', '2022-03-13 07:05:35');
+(13, NULL, NULL, NULL, NULL, '2022-03-07 14:06:53', '2022-03-07 14:06:53'),
+(14, '13-04-2022', 'Laki - Laki', '0', 'jln', '2022-04-12 11:27:43', '2022-04-12 11:30:09'),
+(15, '04-04-2022', 'Laki - Laki', '0', 'jln', '2022-04-13 00:12:17', '2022-04-13 00:16:15'),
+(16, '11-04-2022', 'Laki - Laki', '0', 'jln', '2022-04-14 00:08:35', '2022-04-14 00:14:11'),
+(17, '10-04-2022', 'Laki - Laki', '0', 'jln', '2022-04-14 01:47:53', '2022-04-14 02:06:57'),
+(19, '04-04-2022', 'Laki - Laki', '0', 'jln', '2022-04-14 02:06:23', '2022-04-14 02:06:23'),
+(20, NULL, NULL, NULL, NULL, '2022-04-15 21:26:03', '2022-04-15 21:26:03'),
+(21, '20-04-1999', 'Laki - Laki', '23', 'Jalan Antasura', '2022-04-15 21:57:56', '2022-04-15 21:58:52');
 
 -- --------------------------------------------------------
 
@@ -75,10 +82,6 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`exam_id`, `user_id`, `quiz_id`, `question_id`, `ans`, `is_ans`, `created_at`, `updated_at`) VALUES
-(55, 4, 2, 15, 'klinik', 'no', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
-(56, 4, 2, 6, 'kuluk', 'yes', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
-(57, 4, 2, 5, 'gajah', 'yes', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
-(59, 4, 2, 14, 'pertama', 'no', '2022-02-09 00:42:01', '2022-02-09 00:42:01'),
 (80, 1, 3, 16, '0', 'no', '2022-02-15 03:12:40', '2022-02-15 03:12:40'),
 (81, 1, 3, 20, '0', 'no', '2022-02-15 03:12:40', '2022-02-15 03:12:40'),
 (82, 1, 3, 17, '0', 'no', '2022-02-15 03:12:40', '2022-02-15 03:12:40'),
@@ -109,16 +112,46 @@ INSERT INTO `exams` (`exam_id`, `user_id`, `quiz_id`, `question_id`, `ans`, `is_
 (117, 13, 3, 19, 'Gunung Agung', 'no', '2022-03-07 14:15:55', '2022-03-07 14:15:55'),
 (118, 13, 3, 24, '9', 'no', '2022-03-07 14:15:55', '2022-03-07 14:15:55'),
 (119, 13, 3, 22, '1', 'no', '2022-03-07 14:15:55', '2022-03-07 14:15:55'),
-(120, 9, 3, 16, 'Dance', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(121, 9, 3, 21, 'suci', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(122, 9, 3, 22, '2', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(123, 9, 3, 19, 'Gunung Agung', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(124, 9, 3, 24, '9', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(125, 9, 3, 23, '5', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(126, 9, 3, 25, '5', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(127, 9, 3, 17, '20 Oktober 2009', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(128, 9, 3, 20, 'Ketajaman Berfikir', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40'),
-(129, 9, 3, 18, 'Desember 2010', 'no', '2022-03-19 01:56:40', '2022-03-19 01:56:40');
+(120, 14, 3, 17, '20 Oktober 2009', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(121, 14, 3, 25, '4', 'yes', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(122, 14, 3, 18, 'Juni 2010', 'yes', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(123, 14, 3, 19, 'Gunung Batur', 'yes', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(124, 14, 3, 20, 'Keberanian', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(125, 14, 3, 23, '5', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(126, 14, 3, 22, '1', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(127, 14, 3, 21, 'semua salah', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(128, 14, 3, 16, 'Kepecintaalaman', 'yes', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(129, 14, 3, 24, '13', 'no', '2022-04-12 11:31:29', '2022-04-12 11:31:29'),
+(130, 15, 3, 18, 'Desember 2010', 'no', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(131, 15, 3, 19, 'Gunung Catur', 'no', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(132, 15, 3, 16, 'Kepecintaalaman', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(133, 15, 3, 22, '2', 'no', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(134, 15, 3, 20, 'Penuntun ke arah yang benar', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(135, 15, 3, 24, '13', 'no', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(136, 15, 3, 23, '4', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(137, 15, 3, 17, '20 September 2009', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(138, 15, 3, 21, 'keberanian dan semangat', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(139, 15, 3, 25, '4', 'yes', '2022-04-13 00:17:02', '2022-04-13 00:17:02'),
+(140, 17, 3, 25, '5', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(141, 17, 3, 20, 'Ketajaman Berfikir', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(142, 17, 3, 23, '4', 'yes', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(143, 17, 3, 19, 'Gunung Catur', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(144, 17, 3, 17, '20 Oktober 2009', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(145, 17, 3, 24, '12', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(146, 17, 3, 18, 'Desember 2010', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(147, 17, 3, 21, 'pemarah', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(148, 17, 3, 16, 'Musik', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(149, 17, 3, 22, '2', 'no', '2022-04-14 02:04:10', '2022-04-14 02:04:10'),
+(150, 21, 3, 22, '1', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(151, 21, 3, 18, 'September 2010', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(152, 21, 3, 23, '5', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(153, 21, 3, 19, 'Gunung Abang', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(154, 21, 3, 25, '3', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(155, 21, 3, 16, 'Kepecintaalaman', 'yes', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(156, 21, 3, 20, 'Penuntun ke arah yang benar', 'yes', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(157, 21, 3, 17, '20 November 2009', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(158, 21, 3, 24, '13', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35'),
+(159, 21, 3, 21, 'suci', 'no', '2022-04-15 21:59:35', '2022-04-15 21:59:35');
 
 -- --------------------------------------------------------
 
@@ -147,15 +180,15 @@ INSERT INTO `materi` (`materi_id`, `judul`, `deskripsi`, `kategori`, `cover_phot
 (3, 'Jerat Prusik', '<p>Jerat yang digunakan dalam teknik <i>Prusiking</i></p>', 'Jerat', '1640841211.JPG', 'https://www.youtube.com/watch?v=-EgAoRkkCew', 'jerat-prusik', '2021-12-30 05:13:34', '2022-03-07 03:45:03'),
 (4, 'Italian Hitch', '<p>Italian Hitch. jerat ini biasa dipakai untuk Abseilling</p>', 'Jerat', '1640841326.JPG', 'https://www.youtube.com/watch?v=rA05LU6ogqk', 'italian-hitch', '2021-12-30 05:15:29', '2022-03-07 03:45:34'),
 (5, 'Clove Hitch', '<p><i>Clove hitch</i> (Simpul Pangkal) Untuk mengikat tali pada penambat yang fungsinya sebagai pengaman utama (<i>fixed rope</i>) pada anchor natural dsb. Toleransi terhadap kekuatan tali akan berkurang sebesar 45%.</p>', 'Jerat', '1640842534.JPG', 'https://www.youtube.com/watch?v=ZNH-TBwJ058', 'clove-hitch', '2021-12-30 05:35:37', '2022-03-07 03:46:08'),
-(6, 'Simpul Square Knot', '<p>Gunanya untuk menyambung 2 utas tali yang sama besar dan tidak licin.</p>', 'Simpul', '1640842863.JPG', 'https://www.youtube.com/watch?v=NDDcpoBq8QA', 'simpul-square-knot', '2021-12-30 05:41:07', '2022-03-07 03:46:41'),
+(6, 'Square Knot', '<p>Gunanya untuk menyambung 2 utas tali yang sama besar dan tidak licin.</p>', 'Simpul', '1640842863.JPG', 'https://www.youtube.com/watch?v=NDDcpoBq8QA', 'square-knot', '2021-12-30 05:41:07', '2022-04-14 00:11:32'),
 (7, 'Simpul Delapan Ganda', '<p>Simpul Delapan Ganda (<i>Double figure of eight knot</i>) Untuk pengaman utama dalam penambatan dan pengaman utama yang dihubungkan dengan tubuh atau harness</p>', 'Simpul', '1640843134.JPG', 'https://www.youtube.com/watch?v=i1cq3k7fVMc', 'simpul-delapan-ganda', '2021-12-30 05:45:38', '2022-03-07 03:47:15'),
 (8, 'Overhand Knot', '<p>Untuk mengakhiri pembuatan simpul sebelumnya. Toleransi terhadap kekuatan tali akan berkurang sebesar 40%.</p>', 'Simpul', '1640843202.JPG', 'https://www.youtube.com/watch?v=XqGNKshoCdc', 'overhand-knot', '2021-12-30 05:46:45', '2022-03-07 03:49:23'),
 (9, 'Fisherman Knot', '<p>Untuk menyambung 2 tali yang sama besarnya dan bersifat licin. Toleransi terhadap kekuatan tali 41% – 50%.</p>', 'Simpul', '1640843319.JPG', 'https://www.youtube.com/watch?v=j-aQECOCfEk', 'fisherman-knot', '2021-12-30 05:48:42', '2022-03-07 03:50:01'),
-(10, 'Simpul Delapan Tunggal', '<p>Simpul Delapan Tunggal ( figure of eight knot ) Untuk pengaman utama dalam penambatan dan pengaman utama yang dihubungkan dengan tubuh atau harness apabila carabiner tidak ada.</p>', 'Simpul', '1647582899.JPG', 'https://www.youtube.com/watch?v=QL7Vz5SYx1s', 'simpul-delapan-tunggal', '2022-02-15 02:05:29', '2022-03-18 05:55:02'),
-(11, 'Bowline Knot', '<p>simpul bowline knot biasa digunakan untuk pengaman utama dalam penambatan atau pengaman utama yang dihubungkan dengan penambat dan harness.</p>', 'Simpul', '1647582840.JPG', 'https://www.youtube.com/watch?v=AMHEJBeW19Q', 'bowline-knot', '2022-02-15 02:08:06', '2022-03-18 05:54:02'),
-(12, 'Butterfly Knot', '<p>Butterfly knot biasa digunakan untuk membuat simpul ditengah atau diantara lintasan horizontal. Bisa juga digunakan untuk menghindari tali yang sudah friksi.&nbsp;</p>', 'Simpul', '1647582817.JPG', 'https://www.youtube.com/watch?v=C6Koz5wgYAA', 'butterfly-knot', '2022-02-15 02:10:17', '2022-03-18 05:53:40'),
-(13, 'Double Overhand Knot', '<p>Double Overhand Knot biasanya digunakan di ujung tali untuk mengaitkan carrabiner pada tali.</p>', 'Simpul', '1647582790.JPG', 'https://www.youtube.com/watch?v=beZrIAePwD0', 'double-overhand-knot', '2022-02-15 02:13:47', '2022-03-18 05:53:13'),
-(14, 'Tape Knot', '<p>Untuk Menyambung Tali yang sejenis, yang sifatnya licin atau berbentuk pipih (umumnya digunakan untuk menyambung Webbing)</p>', 'Simpul', '1644895906.jpg', 'https://www.youtube.com/watch?v=njajRUqRZlw', 'tape-knot', '2022-02-15 03:31:46', '2022-02-15 03:31:46');
+(10, 'Simpul Delapan Tunggal', '<p>Simpul Delapan Tunggal ( figure of eight knot ) Untuk pengaman utama dalam penambatan dan pengaman utama yang dihubungkan dengan tubuh atau harness apabila carabiner tidak ada.</p>', 'Simpul', '1649757668.JPG', 'https://www.youtube.com/watch?v=QL7Vz5SYx1s', 'simpul-delapan-tunggal', '2022-02-15 02:05:29', '2022-04-12 10:01:09'),
+(11, 'Bowline Knot', '<p>simpul bowline knot biasa digunakan untuk pengaman utama dalam penambatan atau pengaman utama yang dihubungkan dengan penambat dan harness.</p>', 'Simpul', '1649757648.JPG', 'https://www.youtube.com/watch?v=AMHEJBeW19Q', 'bowline-knot', '2022-02-15 02:08:06', '2022-04-12 10:00:50'),
+(12, 'Butterfly Knot', '<p>Butterfly knot biasa digunakan untuk membuat simpul ditengah atau diantara lintasan horizontal. Bisa juga digunakan untuk menghindari tali yang sudah friksi.&nbsp;</p>', 'Simpul', '1649757628.JPG', 'https://www.youtube.com/watch?v=C6Koz5wgYAA', 'butterfly-knot', '2022-02-15 02:10:17', '2022-04-12 10:00:29'),
+(13, 'Double Overhand Knot', '<p>Double Overhand Knot biasanya digunakan di ujung tali untuk mengaitkan carrabiner pada tali.</p>', 'Simpul', '1649757607.JPG', 'https://www.youtube.com/watch?v=beZrIAePwD0', 'double-overhand-knot', '2022-02-15 02:13:47', '2022-04-12 10:00:09'),
+(14, 'Tape Knot', '<p>Untuk Menyambung Tali yang sejenis, yang sifatnya licin atau berbentuk pipih (umumnya digunakan untuk menyambung Webbing)</p>', 'Simpul', '1649757514.jpg', 'https://www.youtube.com/watch?v=njajRUqRZlw', 'tape-knot', '2022-02-15 03:31:46', '2022-04-14 02:07:58');
 
 -- --------------------------------------------------------
 
@@ -203,22 +236,6 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`option_id`, `question_id`, `option`, `created_at`, `updated_at`) VALUES
-(11, 5, 'gajah', NULL, NULL),
-(12, 5, 'anjing', NULL, NULL),
-(13, 5, 'kerbau', NULL, NULL),
-(14, 5, 'kucing', NULL, '2022-02-05 12:41:09'),
-(15, 6, 'peking', NULL, '2022-02-06 00:52:07'),
-(16, 6, 'becing - becing', NULL, '2022-02-06 00:52:07'),
-(17, 6, 'kuluk', NULL, '2022-02-06 00:52:07'),
-(18, 6, 'memedi', NULL, '2022-02-06 00:52:07'),
-(47, 14, 'pertama', NULL, NULL),
-(48, 14, 'kedelapan', NULL, NULL),
-(49, 14, 'ketujuh', NULL, NULL),
-(50, 14, 'kelima', NULL, NULL),
-(51, 15, 'balian', NULL, NULL),
-(52, 15, 'dokter', NULL, NULL),
-(53, 15, 'rumah sakit', NULL, NULL),
-(54, 15, 'klinik', NULL, NULL),
 (55, 16, 'Kepecintaalaman', NULL, NULL),
 (56, 16, 'Musik', NULL, NULL),
 (57, 16, 'Keagamaan', NULL, NULL),
@@ -280,10 +297,6 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`question_id`, `quiz_id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
-(5, 2, 'Salah satu jenis binatang rumahan, kecuali', 'gajah', '2022-01-29 12:29:30', '2022-02-05 12:41:09'),
-(6, 2, 'anaknya anjing disebut', 'kuluk', '2022-01-29 13:25:21', '2022-02-06 00:52:07'),
-(14, 2, 'naruto termasuk hokage ke berapa?', 'kedelapan', '2022-02-05 13:08:05', '2022-02-05 13:08:05'),
-(15, 2, 'orang berobat harusnya ke?', 'balian', '2022-02-05 13:08:30', '2022-02-05 13:08:30'),
 (16, 3, 'Organisasi Mapala Kompas Stikom Bali bergerak pada bidang ?', 'Kepecintaalaman', '2022-02-15 02:28:28', '2022-02-15 02:28:46'),
 (17, 3, 'Kapan Hari bangkit Organisasi Mapala Kompas Stikom Bali ?', '20 September 2009', '2022-02-15 02:33:11', '2022-02-15 02:33:11'),
 (18, 3, 'Kapan Disahkannya Organisasi Mapala Kompas Stikom Bali ?', 'Juni 2010', '2022-02-15 02:35:17', '2022-02-15 02:35:17'),
@@ -316,7 +329,6 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `description`, `quiz_time`, `number_of_question`, `created_at`, `updated_at`) VALUES
-(2, 'Survival', 'Quiz tentang Survival', '5', '5', '2022-01-29 03:44:33', '2022-02-05 11:22:44'),
 (3, 'Quiz', 'Mohon Dijawab Dengan Benar', '15', '10', '2022-02-15 02:26:18', '2022-02-15 02:26:18');
 
 -- --------------------------------------------------------
@@ -345,11 +357,13 @@ CREATE TABLE `results` (
 --
 
 INSERT INTO `results` (`result_id`, `user_id`, `quiz_id`, `total_mark`, `yes_ans`, `no_ans`, `result_json`, `status`, `tgl_exp`, `tgl_selesai`, `created_at`, `updated_at`) VALUES
-(16, 4, 2, '40', '2', '3', '{\"15\":\"no\",\"6\":\"yes\",\"5\":\"yes\",\"11\":\"no\",\"14\":\"no\"}', 'Selesai', '2022-02-09 08:46:25', '2022-02-09 08:42:01', '2022-02-09 00:41:25', '2022-02-09 00:42:01'),
 (19, 1, 3, '0', '0', '10', '{\"16\":\"no\",\"20\":\"no\",\"17\":\"no\",\"24\":\"no\",\"22\":\"no\",\"23\":\"no\",\"19\":\"no\",\"21\":\"no\",\"18\":\"no\",\"25\":\"no\"}', 'Selesai', '2022-02-15 11:12:40', '2022-02-15 11:12:40', '2022-02-15 02:57:40', '2022-02-15 03:12:40'),
 (23, 11, 3, '20', '2', '8', '{\"19\":\"no\",\"17\":\"no\",\"22\":\"no\",\"18\":\"no\",\"20\":\"yes\",\"24\":\"no\",\"21\":\"no\",\"23\":\"no\",\"16\":\"no\",\"25\":\"yes\"}', 'Selesai', '2022-03-07 19:58:20', '2022-03-07 19:43:51', '2022-03-07 11:43:20', '2022-03-07 11:43:51'),
 (24, 13, 3, '10', '1', '9', '{\"17\":\"no\",\"23\":\"no\",\"21\":\"no\",\"25\":\"yes\",\"20\":\"no\",\"18\":\"no\",\"16\":\"no\",\"19\":\"no\",\"24\":\"no\",\"22\":\"no\"}', 'Selesai', '2022-03-07 22:30:15', '2022-03-07 22:15:55', '2022-03-07 14:15:15', '2022-03-07 14:15:55'),
-(25, 9, 3, '0', '0', '10', '{\"16\":\"no\",\"21\":\"no\",\"22\":\"no\",\"19\":\"no\",\"24\":\"no\",\"23\":\"no\",\"25\":\"no\",\"17\":\"no\",\"20\":\"no\",\"18\":\"no\"}', 'Selesai', '2022-03-19 10:10:26', '2022-03-19 09:56:40', '2022-03-19 01:55:26', '2022-03-19 01:56:40');
+(25, 14, 3, '40', '4', '6', '{\"17\":\"no\",\"25\":\"yes\",\"18\":\"yes\",\"19\":\"yes\",\"20\":\"no\",\"23\":\"no\",\"22\":\"no\",\"21\":\"no\",\"16\":\"yes\",\"24\":\"no\"}', 'Selesai', '2022-04-12 19:45:30', '2022-04-12 19:31:29', '2022-04-12 11:30:30', '2022-04-12 11:31:29'),
+(26, 15, 3, '60', '6', '4', '{\"18\":\"no\",\"19\":\"no\",\"16\":\"yes\",\"22\":\"no\",\"20\":\"yes\",\"24\":\"no\",\"23\":\"yes\",\"17\":\"yes\",\"21\":\"yes\",\"25\":\"yes\"}', 'Selesai', '2022-04-13 08:31:35', '2022-04-13 08:17:02', '2022-04-13 00:16:35', '2022-04-13 00:17:02'),
+(27, 17, 3, '10', '1', '9', '{\"25\":\"no\",\"20\":\"no\",\"23\":\"yes\",\"19\":\"no\",\"17\":\"no\",\"24\":\"no\",\"18\":\"no\",\"21\":\"no\",\"16\":\"no\",\"22\":\"no\"}', 'Selesai', '2022-04-14 10:18:39', '2022-04-14 10:04:10', '2022-04-14 02:03:39', '2022-04-14 02:04:10'),
+(28, 21, 3, '20', '2', '8', '{\"22\":\"no\",\"18\":\"no\",\"23\":\"no\",\"19\":\"no\",\"25\":\"no\",\"16\":\"yes\",\"20\":\"yes\",\"17\":\"no\",\"24\":\"no\",\"21\":\"no\"}', 'Selesai', '2022-04-16 06:14:07', '2022-04-16 05:59:35', '2022-04-15 21:59:07', '2022-04-15 21:59:35');
 
 -- --------------------------------------------------------
 
@@ -374,16 +388,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `no_ca`, `password`, `role`, `no_telp`, `created_at`, `updated_at`) VALUES
-(1, 'A.A Gede Wiyanjana Putra', 'gungde@gmail.com', 'MK - 1811103', '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Anggota', '085743606164', '2022-01-23 04:20:01', '2022-03-07 04:04:28'),
-(2, 'I Wayan Saputra', 'saputra@gmail.com', 'MK0193223', '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Pengurus', '087892848723', '2022-01-21 01:11:12', '2022-03-13 07:15:52'),
+(1, 'A.A Gede Wiyanjana Putra', 'gungde@gmail.com', 'MK - 1811103', '$2y$10$fX3TgYL8.9m8xvc21Opj5.xccOzROG07wcq9ZAILvOfeVTmuxWfhm', 'Pengurus', '085743606164', '2022-01-23 04:20:01', '2022-04-13 00:21:33'),
+(2, 'I Wayan Saputra', 'saputra@gmail.com', NULL, '$2y$10$9ckeP0CM2Hf6x7hbuALaVe6gAgvhKo5dik6XkHtmZVwQ.XO008gZy', 'Pengurus', '087892848723', '2022-01-21 01:11:12', '2022-01-24 04:06:39'),
 (4, 'Ngurah Bagus Satria', 'ngurah@gmail.com', '2021083728', '$2y$10$QbHimm4HQjAgdSjWmJD3TO9kDEmeKxk97JeGNp8/La8FaRjwfUTmu', 'Anggota', '082938912298', '2022-01-24 04:03:27', '2022-01-24 04:03:39'),
 (6, 'I Gede Surya', 'test@gmail.com', '2022123423', '$2y$10$eG8fVsaKWpSvBL183K.au.CgCHSzlzKH6Mcoxwzop9wlUrIZj/gmu', 'Anggota', '08789283782', '2022-01-24 04:20:49', '2022-01-24 04:22:57'),
-(8, 'Verdy Fernanda', 'verdy@gmail.com', '666468', '$2y$10$l0hirW0r27hFUiuy85dEV.JCvOl.KU4lZXOVZqvgDPxAXHLUWIIcG', 'Anggota', NULL, '2022-02-15 03:15:54', '2022-02-15 03:15:54'),
-(9, 'Yudha Ardithya', 'yuda@gmail.com', '1502562532', '$2y$10$B2X/e25meI5cuQ1GBVEw/etu.pItKlEqrghljSFCFd1PhpmzSI8oi', 'Anggota', '08982378123', '2022-03-07 03:53:37', '2022-03-19 01:54:24'),
+(8, 'Verdy Fernanda', 'verdy@gmail.com', '666468', '$2y$10$l0hirW0r27hFUiuy85dEV.JCvOl.KU4lZXOVZqvgDPxAXHLUWIIcG', 'Anggota', '5415', '2022-02-15 03:15:54', '2022-04-14 02:16:40'),
+(9, 'yuda arditya', 'yuda@gmail.com', '1502562532', '$2y$10$B2X/e25meI5cuQ1GBVEw/etu.pItKlEqrghljSFCFd1PhpmzSI8oi', 'Anggota', NULL, '2022-03-07 03:53:37', '2022-03-07 03:53:37'),
+(10, 'oka', 'oka@gmail.com', 'CA - 2022013001', '$2y$10$qdGwmJggjES2x2dG3AbwMOdTLU8VLHtucLLhYSEtGlOE0xGaWapTS', 'Anggota', NULL, '2022-03-07 03:58:53', '2022-03-07 03:58:53'),
 (11, 'komang', 'komang@gmail.com', 'CA-222132', '$2y$10$GUglbOZoPd.30nC9T52/9upMeK5ztfoLtHAqczsdEEiHQXJXmZFO2', 'Anggota', '0898989898', '2022-03-07 11:34:34', '2022-03-07 11:41:06'),
 (12, 'Ade Santoso', 'testing@gmail.com', 'CA-00000', '$2y$10$lRYR9vKOYQNdU1dSUBvFy.0aeaiTMtqUlue32q3L5POn451F2ZoF2', 'Anggota', NULL, '2022-03-07 14:06:03', '2022-03-07 14:06:03'),
-(13, 'Ade Santoso', 'alansantoso@gmail.com', 'CA-00000', '$2y$10$FkdvlDcmyj2ZOXIQrcdXy.7ogYNO2jLLrNKrq6a3amwQRYAkgYj.i', 'Pengurus', '08813281728', '2022-03-07 14:06:53', '2022-03-13 07:15:39'),
-(14, 'Nyomaaaan', 'test20@gmail.com', 'CA02902931', '$2y$10$NzvZL1uwDpF6TPkv2gYb1e6H0skL/M6NLdTityhRNJ1fqtWh83FbC', 'Pengurus', '09829031', '2022-03-13 07:05:35', '2022-03-13 07:05:35');
+(13, 'Ade Santoso', 'alansantoso@gmail.com', 'CA-00000', '$2y$10$FkdvlDcmyj2ZOXIQrcdXy.7ogYNO2jLLrNKrq6a3amwQRYAkgYj.i', 'Anggota', NULL, '2022-03-07 14:06:53', '2022-03-07 14:06:53'),
+(14, 'Putra Andika', 'dika@gmail.com', 'CA-123', '$2y$10$T6wd7nD92fiQXF13ZAxK9.TwBXKXyxRKOKju8asAe86.4SP3IapbK', 'Anggota', '0898989898', '2022-04-12 11:27:43', '2022-04-12 11:30:09'),
+(15, 'Lanteg', 'lanang@gmail.com', 'CA - 202201', '$2y$10$nDhK7MGDnTtWvh5xdJm8WueILzzKTLvoHgI1Tpf3UrddC875LwXdy', 'Anggota', '085124623', '2022-04-13 00:12:17', '2022-04-13 00:16:15'),
+(16, 'quarta', 'quarta@gmail.com', 'CA - 2312154', '$2y$10$qd7i57otlcXMeqeKw.4yOewh38Lc29OwFcJN0dR04ut79tfNndsTq', 'Anggota', '84132', '2022-04-14 00:08:35', '2022-04-14 00:14:11'),
+(17, 'edo', 'edo@gmail.com', 'CA - 5120', '$2y$10$JzERRM5QTODTcjMVrcy7VOdxXovXuNZjhVgBk/pZ0gvcpsSaLFymG', 'Pengurus', '1651321', '2022-04-14 01:47:53', '2022-04-14 02:06:57'),
+(19, 'kadek', 'kadek@gmail.com', '-', '$2y$10$mmkW3G7Ww8H6G40ENBPWauOA9bl.FmP7TucELeu/GNI.u7BHYtpdm', 'Anggota', '251515', '2022-04-14 02:06:23', '2022-04-14 02:06:23'),
+(20, 'Wahyudi Nugroho', 'masyarakat@example.com', NULL, '$2y$10$j3oScZXx3Fx7MKzqgCzaD.5vt2yxfu1Bw/DqLeQUPJiSHFkSgM9qi', 'Masyarakat', NULL, '2022-04-15 21:26:03', '2022-04-15 21:26:03'),
+(21, 'Yudha Ardana', 'anggota@example.com', 'CA7238932', '$2y$10$GZv4UMLvo/03AeiW/Q8IMewKtt.kH.PC1Ysa5uSabUOObnj5qHdD2', 'Anggota', '08727312323', '2022-04-15 21:57:56', '2022-04-15 21:58:52');
 
 --
 -- Indexes for dumped tables
@@ -459,7 +480,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `exam_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `materi`
@@ -477,31 +498,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `option_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `question_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `quiz_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `quiz_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `result_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

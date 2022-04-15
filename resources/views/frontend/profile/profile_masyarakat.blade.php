@@ -13,7 +13,7 @@
                 <h3 class="block-title">Informasi Akun</h3>
             </div>
             <div class="block-content">
-                <form action="{{ route('anggota.change_profile') }}" method="POST">
+                <form action="{{ route('masyarakat.change_profile') }}" method="POST">
                     @csrf
                     <div class="row push">
                         <div class="col-lg-4">
@@ -34,11 +34,6 @@
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{ $users->email }}">
                             </div>
-                            {{-- <div class="form-group">
-                                <label>No. CA</label>
-                                <input type="text" class="form-control" id="no_ca" name="no_ca" value="{{ $users->no_ca }}">
-                                <span class="form-control">{{ $users->no_ca }}</span>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="no_telp">No. Telp</label>
                                 <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $users->no_telp }}">

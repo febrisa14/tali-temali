@@ -28,9 +28,17 @@ class PenggunaController extends Controller
                 return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                $actionBtn = ' <a href="/admin/pengguna/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
-                $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
-                return $actionBtn;
+                    if ($data->role == "Masyarakat")
+                    {
+                        $actionBtn = ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
+                        return $actionBtn;
+                    }
+                    else
+                    {
+                        $actionBtn = ' <a href="/admin/pengguna/'.$data->user_id.'/edit" class="editdata btn btn-sm btn-alt-success" data-toggle="tooltip" title="Edit Data"><i class="fa fa-fw fa-edit"></i> Ubah</a>';
+                        $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-id="' . $data->user_id . '" class="delete btn btn-sm btn-alt-danger" data-toggle="tooltip" title="Delete Data"><i class="fa fa-fw fa-trash"></i> Hapus</a>';
+                        return $actionBtn;
+                    }
                 })
                 ->rawColumns(['action'])
                 ->make(true);
