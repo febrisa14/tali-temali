@@ -38,7 +38,7 @@ class QuizzesController extends Controller
                     }
                     else if ($res = Results::where('user_id', Auth::user()->user_id)->where('quiz_id', $data->quiz_id)->first())
                     {
-                        $actionBtn = ' <a href="/anggota/quiz-start/'. $data->quiz_id .'" class="pilih btn btn-sm btn-warning" data-toggle="tooltip" title="Lanjutkan Quiz"><i class="fa fa-chevron-right mr-1"></i> Lanjutkan Quiz</a>';
+                        $actionBtn = ' <a href="/quiz-start/'. $data->quiz_id .'" class="pilih btn btn-sm btn-warning" data-toggle="tooltip" title="Lanjutkan Quiz"><i class="fa fa-chevron-right mr-1"></i> Lanjutkan Quiz</a>';
                         return $actionBtn;
                     }
                     else
@@ -208,7 +208,7 @@ class QuizzesController extends Controller
         // $res->result_json = json_encode($result);
         // $res->save();
 
-        return redirect()->route('anggota.quiz.index')->with('success', 'Berhasil Mengikuti Quiz.');
+        return redirect()->route('quiz.index')->with('success', 'Berhasil Mengikuti Quiz.');
 
     }
 

@@ -145,7 +145,7 @@ $(document).ready(function(){
                 {targets: 4, className: "text-center"},
             ],
             ajax: {
-                url: '{{ route('anggota.quiz.index') }}',
+                url: '{{ route('quiz.index') }}',
             },
             columns: [
                   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
@@ -197,7 +197,7 @@ $(document).ready(function(){
                 $.ajax({
                     type: "post",
                     dataType: 'json',
-                    url: "{{ route('anggota.quiz.start','') }}/"+id,
+                    url: "{{ route('quiz.start','') }}/"+id,
                     success: function (data) {
                         // if (data.success == true)
                         // {

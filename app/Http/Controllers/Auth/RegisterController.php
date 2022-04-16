@@ -27,13 +27,8 @@ class RegisterController extends Controller
             $request->validate([
                 'email' => 'required|email|unique:users',
                 'name' => 'required',
-                // 'no_ca' => 'required',
                 'password' => 'required',
                 'checkbox_1' => 'required',
-                // 'checkbox_2' => 'required',
-                'checkbox_1.required' => 'Pernyataan 1 wajib dicentang',
-                // 'checkbox_2.required' => 'Pernyataan 2 wajib dicentang',
-                'email.unique' => 'Email telah digunakan',
             ]);
 
             $users = User::create([
@@ -66,15 +61,8 @@ class RegisterController extends Controller
                 'no_ca' => 'required',
                 'password' => 'required',
                 'checkbox_1' => 'required',
-                // 'checkbox_2' => 'required',
+                'checkbox_2' => 'required',
                 'checkbox_3' => 'required',
-                'checkbox_4' => 'required',
-                'checkbox_1.required' => 'Pernyataan 1 wajib dicentang',
-                // 'checkbox_2.required' => 'Pernyataan 2 wajib dicentang',
-                'checkbox_3.required' => 'Pernyataan 3 wajib dicentang',
-                'checkbox_4.required' => 'Pernyataan 4 wajib dicentang',
-                'no_ca.required' => 'No. CA wajib diisi',
-                'email.unique' => 'Email telah digunakan',
             ]);
 
             $users = User::create([

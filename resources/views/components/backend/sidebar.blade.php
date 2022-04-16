@@ -89,9 +89,27 @@
                         <span class="nav-main-link-name">Profile</span>
                     </a>
                 </li>
-                @else
+                @endIf
+                @if (Request::is('anggota/quiz*'))
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Request::is('anggota/quiz*') ? 'active' : '' }}" href="{{ route('anggota.quiz.index') }}">
+                        <i class="nav-main-link-icon fa fa-list-alt"></i>
+                        <span class="nav-main-link-name">Quiz</span>
+                    </a>
+                </li>
+                @endIf
+
+                @if (Request::is('masyarakat/profile*'))
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Request::is('masyarakat/profile*') ? 'active' : '' }}" href="{{ route('masyarakat.profile') }}">
+                        <i class="nav-main-link-icon fas fa-user"></i>
+                        <span class="nav-main-link-name">Profile</span>
+                    </a>
+                </li>
+                @endIf
+                @if (Request::is('masyarakat/quiz*'))
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Request::is('masyarakat/quiz*') ? 'active' : '' }}" href="{{ route('masyarakat.quiz.index') }}">
                         <i class="nav-main-link-icon fa fa-list-alt"></i>
                         <span class="nav-main-link-name">Quiz</span>
                     </a>

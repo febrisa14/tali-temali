@@ -1,4 +1,26 @@
 {{-- <header class="site-header site-header--menu-right site-header--absolute site-header--sticky"> --}}
+<style>
+    @media screen and (max-width: 800px) {
+        #button-diluar {
+            display: none;
+        }
+
+        #logindiluar {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 801px) {
+        #button-didalem {
+            display: none;
+        }
+
+        #logindidalem {
+            display: none;
+        }
+    }
+</style>
+
 <header class="site-header {{ Request::is('login') || Request::is('kurikulum') || Request::is('kurikulum/*') || Request::is('materi_jerat') || Request::is('materi_jerat/*') || Request::is('materi_simpul') || Request::is('materi_simpul/*') || Request::is('register') ? 'site-header--menu-right sign-in-menu-1' : 'site-header--menu-center' }} landing-6-menu site-header--absolute site-header--sticky">
     <div class="container">
         <nav class="navbar site-navbar">
@@ -51,17 +73,22 @@
                 <li class="nav-item">
                     <a href="{{ route('kurikulum') }}" class="nav-link-item">Kurikulum</a>
                 </li>
+                {{-- @if(Auth::user()->role == 'Anggota')
                 <li class="nav-item">
                     <a href="{{ route('anggota.quiz.index') }}" class="nav-link-item">Quiz</a>
                 </li>
+                @endif --}}
+
+                <li class="nav-item">
+                    <a href="{{ route('quiz.index') }}" class="nav-link-item">Quiz</a>
+                </li>
+
                 @endIf
-              </ul>
-              @endIf
-            </nav>
-          </div>
-          @auth
-          <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
-            @if(Auth::User()->role == 'Pengurus')
+
+                @auth
+          <div class="l7-header-btn ms-auto d-xs-inline-flex" id="button-didalem">
+              <div id="button-didalem">
+                @if(Auth::User()->role == 'Pengurus')
                 <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
                 </a>
             @elseIf (Auth::User()->role == 'Anggota')
@@ -79,13 +106,55 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
             </form>
+              </div>
+          </div>
+          @endauth
+
+          @guest
+          <div class="header-btn l6-header-btn  ms-auto d-xs-inline-flex">
+              <div id="logindidalem">
+                <a class="btn btn btn-style-03 focus-reset" href="{{ route('login') }}">
+                    Login
+                  </a>
+              </div>
+          </div>
+          @endguest
+              </ul>
+              @endIf
+            </nav>
+          </div>
+          @auth
+          <div class="header-btn l7-header-btn ms-auto d-none d-xs-inline-flex">
+              <div id="button-diluar">
+                @if(Auth::User()->role == 'Pengurus')
+                <a href="{{ route('admin.dashboard') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Admin Dashboard
+                </a>
+            @elseIf (Auth::User()->role == 'Anggota')
+                <a href="{{ route('anggota.profile') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Profile
+                </a>
+            @else
+                <a href="{{ route('masyarakat.profile') }}" class="btn btn btn-style-03 focus-reset"><i class="si si-home"></i> Profile
+                </a>
+            @endIf
+            <a class="btn btn btn-style-03 focus-reset" href="{{ route('logout') }}" onclick="
+              event.preventDefault();
+              document.getElementById('logout-form').submit();
+            ">Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+              </div>
+
           </div>
           @endauth
           @guest
           <div class="header-btn l6-header-btn  ms-auto d-none d-xs-inline-flex">
-            <a class="btn btn btn-style-03 focus-reset" href="{{ route('login') }}">
-              Login
-            </a>
+              <div id="logindiluar">
+                <a class="btn btn btn-style-03 focus-reset" href="{{ route('login') }}">
+                    Login
+                  </a>
+              </div>
           </div>
           @endguest
           <!-- mobile menu trigger -->
@@ -96,3 +165,19 @@
         </nav>
       </div>
     </header>
+
+    {{-- @section('scripts')
+    <script>
+        $(document).ready(function(){
+            if(window.matchMedia("(max-width: 500px)").matches){
+            // The viewport is less than 768 pixels wide
+                document.getElementById('button-diluar').style.display = "none";
+                document.getElementById('button-didalem').style.display = "block";
+            } else{
+            // The viewport is at least 768 pixels wide
+                document.getElementById('button-diluar').style.display = "block";
+                document.getElementById('button-didalem').style.display = "none";
+            }
+        });
+    </script>
+    @endsection --}}

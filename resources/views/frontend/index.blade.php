@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Hero Area -->
-    <div class="hero-area-l7 background-property" style="background: url({{ url('assets/image/hero-bg.jpg') }});">
+    <div class="hero-area-l7 background-property" style="background: url({{ asset('assets/image/hero-bg.jpg') }});">
       <div class="container">
         <div class="bg-overlay" style="border-radius: 0.8rem; opacity: 0.6;"></div>
           <div class="row align-items-center justify-content-lg-start justify-content-center">
@@ -36,7 +36,7 @@
           <div class="col-lg-12">
             <div class="inner-about-bg-area">
               <div class="bg-image">
-                <img class="w-100" src="{{ url('assets/image/ukm-mapala.jpg') }}" alt="image">
+                <img class="w-100" src="{{ asset('assets/image/ukm-mapala.jpg') }}" alt="image">
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
           <div class="col-lg-6 col-md-10 col-sm-10">
             <div class="icon-content-area d-md-flex align-items-center text-center text-md-start">
               <div class="icon">
-                <img src="{{ url('assets/image/landing-5/heart1.svg') }}" alt="image">
+                <img src="{{ asset('assets/image/landing-5/heart1.svg') }}" alt="image">
               </div>
               <div class="content">
                 <p>Organisasi ini bertujuan untuk menumbuhkan, memupuk, membina dan mengembangkan penalaran mahasiswa sebagai insan intelektual yang menunjang kelestarian alam dan lingkungan beserta segenap isinya sebagai pernyataan rasa cinta terhadap Tuhan sebagai pencipta.
@@ -56,7 +56,7 @@
           <div class="col-lg-6 col-md-10 col-sm-10">
             <div class="icon-content-area d-md-flex align-items-center text-center text-md-start">
               <div class="icon icon-2">
-                <img src="{{ url('assets/image/landing-5/zap1.svg') }}" alt="image">
+                <img src="{{ asset('assets/image/landing-5/zap1.svg') }}" alt="image">
               </div>
               <div class="content">
                 <p>Organisasi ini bertujuan juga untuk membina fisik dan mental dalam mengembangkan kepribadian mahasiswa pecinta alam yang terampil dan berbudi pekerti luhur</p>
@@ -100,11 +100,11 @@
             <div class="offset-xl-1 col-xl-5 offset-lg-1 col-lg-5 col-md-9 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="700" data-aos-duration="1000">
               <div class="content-image-group-l6-3 position-relative text-center">
                 <div class="bg-image">
-                  <img src="{{ url('assets/image/landing-6/content-2-bg.png') }}" alt="image">
+                  <img src="{{ asset('assets/image/landing-6/content-2-bg.png') }}" alt="image">
                 </div>
                 <div class="main-image-group">
                   <div class="image-1">
-                    <img src="{{ url('assets/image/logo.png') }}" alt="image">
+                    <img src="{{ asset('assets/image/logo.png') }}" alt="image">
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-xl-8 col-lg-9 order-lg-1 order-0">
                     <div class="hero-area-image">
-                      <img src="{{ url('assets/image/struktur.jpg') }}" alt="" class="w-100">
+                      <img src="{{ asset('assets/image/struktur.jpg') }}" alt="" class="w-100">
                     </div>
                 </div>
             </div>

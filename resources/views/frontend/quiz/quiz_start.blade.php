@@ -18,7 +18,7 @@
             <!-- All Orders -->
             <div class="block-content block-content-full">
                 <h3>{{$quiz->quiz_name}}</h3><hr>
-                <form action="{{ route('anggota.quiz.submit')}}" method="POST" name="exam">
+                <form action="{{ route('quiz.submit')}}" method="POST" name="exam">
                 @csrf
                     @foreach($questions as $key=>$ques)
                         <input type="hidden" name="question_id{{$key+1}}" value="{{$ques->question_id}}">

@@ -79,7 +79,7 @@
                     <div class="keep-sign-area" id="checkbox-anggota3">
                         <div class="check-form d-inline-block">
                             <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
-                            <input type="checkbox" name="checkbox_3" class="checkbox checkbox-2 rounded-check-box">
+                            <input type="checkbox" name="checkbox_2" class="checkbox checkbox-2 rounded-check-box">
                             <span class="remember-text">Bersedia untuk ikut berkontribusi dalam membantu menyebarluaskan materi guna membantu mahasiswa stikom dan masyarakat umum.</span>
                             </label>
                         </div>
@@ -87,7 +87,7 @@
                     <div class="keep-sign-area" id="checkbox-anggota4">
                         <div class="check-form d-inline-block">
                             <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
-                            <input type="checkbox" name="checkbox_4" class="checkbox checkbox-2 rounded-check-box">
+                            <input type="checkbox" name="checkbox_3" class="checkbox checkbox-2 rounded-check-box">
                             <span class="remember-text">Saya setuju dengan syarat-syarat keanggotaan UKM Mapala Kompas Stikom Bali.</span>
                             </label>
                         </div>
