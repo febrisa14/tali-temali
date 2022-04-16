@@ -38,7 +38,7 @@
                     <div class="check-form d-inline-block">
                         <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
                         <input type="checkbox" name="checkbox_masyarakat" class="checkbox checkbox-2 rounded-check-box" onclick="registerMasyarakat()">
-                        <span class="remember-text" style="text-decoration: underline;">Khusus Untuk Registrasi Masyarakat Wajib Klik CheckBox !, Jika Bukan Masyarakat Hiraukan Ini</span>
+                        <span class="remember-text">Khusus Untuk Registrasi Masyarakat Wajib Klik CheckBox !, Jika Bukan Masyarakat Hiraukan Ini</span>
                         </label>
                     </div>
                 </div>
@@ -47,12 +47,9 @@
                     <input type="text" name="email" class="form-control" placeholder="Masukan email anda">
                 </div>
                 <div class="form-group" id="field-anggota">
-                    <label>No. CA</label>
+                    <label>No. CA / MK</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text form-control">CA</div>
-                        </div>
-                        <input type="text" name="no_ca" class="form-control" placeholder="Masukan No. CA anda">
+                        <input type="text" name="no_ca" class="form-control" placeholder="Masukan No. CA / MK anda">
                     </div>
                 </div>
                 <div class="form-group">
