@@ -38,7 +38,7 @@
                     <div class="check-form d-inline-block">
                         <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
                         <input type="checkbox" name="checkbox_masyarakat" class="checkbox checkbox-2 rounded-check-box" onclick="registerMasyarakat()">
-                        <span class="remember-text">Khusus Untuk Registrasi Masyarakat Wajib Klik CheckBox !, Jika Bukan Masyarakat Hiraukan Ini</span>
+                        <span class="remember-text">Khusus Untuk Registrasi Masyarakat Wajib Klik CheckBox Ini !, Jika Bukan Masyarakat Hiraukan Ini</span>
                         </label>
                     </div>
                 </div>
