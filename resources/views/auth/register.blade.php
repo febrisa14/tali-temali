@@ -68,14 +68,14 @@
                             </label>
                         </div>
                     </div>
-                    <div class="keep-sign-area">
+                    {{-- <div class="keep-sign-area">
                         <div class="check-form d-inline-block">
                             <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
                             <input type="checkbox" name="checkbox_2" class="checkbox checkbox-2 rounded-check-box">
                             <span class="remember-text">Saya setuju untuk tidak menjadikan materi dalam website sebagai keperluan komersial.</span>
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="keep-sign-area" id="checkbox-anggota3">
                         <div class="check-form d-inline-block">
                             <label for="terms-check" class="check-input-control d-flex align-items-center mb-0">
