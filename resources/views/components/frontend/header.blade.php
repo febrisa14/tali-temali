@@ -8,6 +8,14 @@
         #logindiluar {
             display: none;
         }
+
+        #logindidalem {
+          margin-top: 10px;
+        }
+
+        #button-didalem {
+          margin-top: 10px;
+        }
     }
 
     @media screen and (min-width: 801px) {
